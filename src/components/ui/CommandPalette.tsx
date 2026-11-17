@@ -18,8 +18,8 @@ import {
   Sparkles,
   Calendar,
   Calculator,
+  Phone,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 import { profileData } from "@/data/profile";
 import { projectsData } from "@/data/projects";
 import { useToast } from "../providers/ToastProvider";
@@ -222,14 +222,14 @@ export function CommandPalette() {
       },
     },
     {
-      id: "act-github",
+      id: "act-phone",
       category: "Actions",
-      title: "Open GitHub Profile",
-      subtitle: profileData.socials.github,
-      icon: <GithubIcon className="w-4 h-4 text-slate-300" />,
+      title: "Call Phone Directly",
+      subtitle: `+${profileData.contacts.whatsappNumber}`,
+      icon: <Phone className="w-4 h-4 text-cyan" />,
       action: () => {
         setIsOpen(false);
-        window.open(profileData.socials.github, "_blank");
+        window.open(`tel:+${profileData.contacts.whatsappNumber}`);
       },
     },
   ];

@@ -121,10 +121,12 @@ export interface ProfileData {
     whatsappDisplay: string;
   };
   socials: {
-    github: string;
-    githubUsername: string;
-    linkedin: string;
-    naimKnowsFacebook: string;
+    whatsapp: string;
+    email: string;
+    phone: string;
+    linkedin?: string;
+    github?: string;
+    facebook?: string;
   };
 }
 

@@ -53,7 +53,7 @@ export function validateContactSubmission(body: ContactPayload): ValidationResul
       name: body.name.slice(0, 100).trim(),
       email: body.email.slice(0, 100).trim(),
       subject: (typeof body.subject === "string" ? body.subject : "General Inquiry").slice(0, 150).trim(),
-      serviceType: (typeof body.serviceType === "string" ? body.serviceType : "AI Automation").slice(0, 80).trim(),
+      serviceType: (typeof body.serviceType === "string" ? body.serviceType : "MS Office & Practical Accounting").slice(0, 80).trim(),
       message: body.message.slice(0, 2000).trim(),
       receivedAt: new Date().toISOString(),
     },

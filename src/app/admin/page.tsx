@@ -67,20 +67,19 @@ export default function AdminPage() {
     {
       id: "t-2",
       author: "Rafiq Chowdhury",
-      role: "Director of Studies",
-      organization: "Madrasa Board Working Group",
-      comment: "The Amal-nama workflow and parent communication concept addresses a critical logistical gap.",
-      status: "Pending",
+      role: "Finance Director",
+      organization: "Retail Distribution Hub",
+      comment: "Eyakub automated our monthly salary sheet and tax deduction formulas, saving our finance department hours of manual work.",
+      status: "Approved",
     },
   ]);
 
   // Project creator form state (Section 12)
   const [newProject, setNewProject] = useState({
     title: "",
-    category: "AI Automation",
+    category: "Productivity",
     shortDescription: "",
     tags: "",
-    github: "",
     featured: false,
   });
 
@@ -117,10 +116,9 @@ export default function AdminPage() {
     toast(`Project "${newProject.title}" staged successfully in memory!`, "success");
     setNewProject({
       title: "",
-      category: "AI Automation",
+      category: "Productivity",
       shortDescription: "",
       tags: "",
-      github: "",
       featured: false,
     });
   };
@@ -304,7 +302,9 @@ export default function AdminPage() {
               <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
                 <span className="text-xs font-mono text-slate-400">CREDENTIAL MILESTONES</span>
                 <p className="text-2xl font-extrabold text-slate-100 mt-1">{credentialsData.length}</p>
-                <span className="text-[11px] text-emerald-400 font-mono">1 active + 2 certified</span>
+                <span className="text-[11px] text-emerald-400 font-mono">
+                  {credentialsData.filter((c) => c.kind === "current_learning").length} active + {credentialsData.filter((c) => c.kind === "completed_credential").length} certified
+                </span>
               </div>
 
               <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
@@ -367,7 +367,7 @@ export default function AdminPage() {
                     required
                     value={newProject.title}
                     onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
-                    placeholder="e.g. Enterprise RAG Support Agent"
+                    placeholder="e.g. Monthly Corporate Payroll & Salary Break-up"
                     className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200"
                   />
                 </div>
@@ -378,11 +378,10 @@ export default function AdminPage() {
                     onChange={(e) => setNewProject({ ...newProject, category: e.target.value })}
                     className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200"
                   >
-                    <option value="AI Automation">AI Automation</option>
-                    <option value="AI Agents">AI Agents</option>
-                    <option value="Web Apps">Web Apps</option>
-                    <option value="Security">Security</option>
                     <option value="Productivity">Productivity</option>
+                    <option value="Accounting">Accounting</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="AI Automation">AI Automation</option>
                   </select>
                 </div>
               </div>
@@ -539,11 +538,11 @@ export default function AdminPage() {
                 <h4 className="text-xs font-mono text-slate-400 mb-2">TOP ACCESSED CASE STUDIES</h4>
                 <div className="space-y-2 mt-4">
                   <div className="flex justify-between text-xs font-mono text-slate-400">
-                    <span>personal-pc-security</span>
+                    <span>salary-breakup-payroll</span>
                     <span className="text-slate-600">-- views</span>
                   </div>
                   <div className="flex justify-between text-xs font-mono text-slate-400">
-                    <span>madrasa-management</span>
+                    <span>employee-payroll-master</span>
                     <span className="text-slate-600">-- views</span>
                   </div>
                 </div>

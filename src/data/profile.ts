@@ -32,9 +32,8 @@ export const profileData: ProfileData = {
     whatsappDisplay: "01877508893",
   },
   socials: {
-    github: "https://github.com",
-    githubUsername: "eyakubmahmud",
-    linkedin: "https://www.linkedin.com",
-    naimKnowsFacebook: "https://www.facebook.com",
+    whatsapp: "https://wa.me/8801877508893",
+    email: "mailto:eyakubali4125@gmail.com",
+    phone: "tel:+8801877508893",
   },
 };

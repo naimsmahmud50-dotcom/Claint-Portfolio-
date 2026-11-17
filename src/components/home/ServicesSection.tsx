@@ -72,7 +72,7 @@ export function ServicesSection() {
             Engineered Services &amp; Solutions
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-            Outcome-focused digital services: From modern websites and Android mobile apps to emergency website bug fixes and intelligent workflow automations.
+            Outcome-focused digital solutions: From advanced Excel modeling and practical accounting to executive documentation, commercial media, and intelligent workflow automations.
           </p>
         </div>
 

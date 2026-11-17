@@ -41,7 +41,7 @@ export function sanitizePlainText(input: unknown, maxLength = 3000): string {
 /**
  * Validates and safely resolves an HTTP/HTTPS origin to prevent Host/Origin header injection.
  */
-export function sanitizeOrigin(originHeader: string | null, fallback = "https://mahmud-portfolio.vercel.app"): string {
+export function sanitizeOrigin(originHeader: string | null, fallback = "https://eyakubmahmud.vercel.app"): string {
   if (!originHeader) return fallback;
   try {
     const parsed = new URL(originHeader);

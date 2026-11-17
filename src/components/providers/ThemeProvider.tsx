@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
 
     applyTheme();
-    localStorage.setItem("mahmud_portfolio_theme", theme);
+    localStorage.setItem("eyakub_portfolio_theme", theme);
 
     const listener = () => {
       if (theme === "system") applyTheme();

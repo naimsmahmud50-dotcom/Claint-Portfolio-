@@ -205,9 +205,7 @@ export const projectsData: Project[] = [
     techStack: {
       tools: ["Microsoft PowerPoint", "Slide Master", "SmartArt", "Infographics Design"],
     },
-    links: {
-      live: "#",
-    },
+    links: {},
     status: "Production Concept",
     caseStudy: {
       overview:
@@ -252,9 +250,7 @@ export const projectsData: Project[] = [
     techStack: {
       tools: ["Meta Ads Manager", "Zapier", "Make.com", "Google Sheets", "WhatsApp Integration"],
     },
-    links: {
-      live: "#",
-    },
+    links: {},
     status: "In Active Development",
     caseStudy: {
       overview:

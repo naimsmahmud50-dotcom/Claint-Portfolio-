@@ -13,8 +13,9 @@ import {
   Copy,
   FileText,
   Calendar,
+  MessageSquare,
+  Mail,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 import { useToast } from "../providers/ToastProvider";
 import { HeroTerminal } from "../ui/HeroTerminal";
 
@@ -165,28 +166,26 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Secondary Social & Quick Action Row */}
+            {/* Secondary Direct Channels & Quick Action Row */}
             <div className="mt-10 flex flex-wrap items-center gap-5 pt-6 border-t border-slate-800/80 text-sm text-slate-300">
-              <span className="font-mono text-slate-300 font-semibold uppercase tracking-wider text-xs">Connect:</span>
+              <span className="font-mono text-slate-300 font-semibold uppercase tracking-wider text-xs">Direct:</span>
               
               <a
-                href={profileData.socials.github}
+                href={profileData.socials.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
               >
-                <GithubIcon className="w-4 h-4 text-slate-300" />
-                <span>GitHub</span>
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>WhatsApp</span>
               </a>
 
               <a
-                href={profileData.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-blue-400 transition-colors"
+                href={profileData.socials.email}
+                className="inline-flex items-center gap-1.5 hover:text-cyan transition-colors"
               >
-                <LinkedinIcon className="w-4 h-4 text-blue-400" />
-                <span>LinkedIn</span>
+                <Mail className="w-4 h-4 text-cyan" />
+                <span>Email</span>
               </a>
 
               <button

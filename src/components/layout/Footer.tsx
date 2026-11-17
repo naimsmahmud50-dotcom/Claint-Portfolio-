@@ -3,8 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { profileData } from "@/data/profile";
-import { Mail, MessageSquare, ExternalLink, ShieldCheck } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
+import { Mail, MessageSquare, ExternalLink, ShieldCheck, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -50,24 +49,6 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-300">
           <div className="flex flex-wrap items-center justify-center gap-5">
             <a
-              href={profileData.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-cyan transition-colors"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-              <span>GitHub</span>
-            </a>
-            <a
-              href={profileData.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-cyan transition-colors"
-            >
-              <LinkedinIcon className="w-3.5 h-3.5" />
-              <span>LinkedIn</span>
-            </a>
-            <a
               href={`mailto:${profileData.contacts.primaryEmail}`}
               className="flex items-center gap-1.5 hover:text-cyan transition-colors"
             >
@@ -82,6 +63,13 @@ export function Footer() {
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
+            </a>
+            <a
+              href={`tel:+${profileData.contacts.whatsappNumber}`}
+              className="flex items-center gap-1.5 hover:text-cyan transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Phone</span>
             </a>
           </div>
 

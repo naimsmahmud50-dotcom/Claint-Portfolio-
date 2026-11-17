@@ -41,7 +41,7 @@ export function EngagementSection() {
             How We Can Work Together
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
-            Transparent, outcome-driven sprint packages designed to eliminate guesswork. From modern websites and Android mobile apps to urgent website problem solving and workflow automations.
+            Transparent, outcome-driven sprint packages designed to eliminate guesswork. From advanced Excel modeling and practical accounting to executive documentation, commercial media, and intelligent workflow automations.
           </p>
         </div>
 
@@ -152,7 +152,7 @@ export function EngagementSection() {
                 Enterprise Zero-Risk Delivery Framework
               </p>
               <p className="text-xs text-slate-300 mt-0.5">
-                Clear milestone milestones, NDA compliance, verified GitHub commits, and direct architect communication.
+                Clear delivery milestones, strict confidentiality, verified spreadsheet accuracy, and direct consultation communication.
               </p>
             </div>
           </div>

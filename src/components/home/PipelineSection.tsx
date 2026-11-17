@@ -46,35 +46,35 @@ const getPipelineIcon = (iconName: string) => {
 const SIMULATION_TELEMETRY: Record<number, { phase: string; log: string }> = {
   1: {
     phase: "INGESTION",
-    log: "Trigger received via authenticated HTTPS Webhook. Payload SHA-256 HMAC validated.",
+    log: "Trigger received via authenticated webhook / form entry. Data payload validated.",
   },
   2: {
     phase: "NORMALIZATION",
-    log: "Sanitizing unstructured payload with strict runtime Zod guards. 14 schema entities isolated.",
+    log: "Sanitizing data inputs with strict validation guards. Schema entities isolated.",
   },
   3: {
     phase: "REASONING",
-    log: "Autonomous Gemini LLM agent evaluated task constraints & selected optimal toolchain.",
+    log: "Automated decision logic evaluated business rules & selected optimal pipeline.",
   },
   4: {
     phase: "EXECUTION",
-    log: "Executing actions across outbound zero-inbound MTProto tunnel. Microservice latency: 19ms.",
+    log: "Automated workflow executing formula calculations and data transformation.",
   },
   5: {
     phase: "VERIFICATION",
-    log: "Self-correction guard verified execution assertions. 0 schema anomalies detected.",
+    log: "Formula auditing & sanity checks verified. 0 calculation discrepancies detected.",
   },
   6: {
     phase: "PERSISTENCE",
-    log: "State committed to local Drift SQLite store with asynchronous PostgreSQL sync queued.",
+    log: "Audit records committed to secure spreadsheet & database store.",
   },
   7: {
     phase: "NOTIFICATION",
-    log: "Dispatching multi-channel event alert to Telegram executive channel & WhatsApp webhook.",
+    log: "Dispatching real-time event alerts to WhatsApp business channel & email.",
   },
   8: {
     phase: "SLA_COMPLETE",
-    log: "Pipeline converged successfully in 1,240ms. Zero bottlenecks. Status: 200 OK.",
+    log: "Workflow converged successfully in under 2 seconds. Zero errors. Status: 200 OK.",
   },
 };
 

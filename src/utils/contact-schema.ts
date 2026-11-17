@@ -29,7 +29,7 @@ export const contactSchema = z.object({
     .trim()
     .max(80, "Service type cannot exceed 80 characters")
     .optional()
-    .transform((val) => (val && val.length > 0 ? val : "AI Automation")),
+    .transform((val) => (val && val.length > 0 ? val : "MS Office & Practical Accounting")),
 
   budget: z
     .string()

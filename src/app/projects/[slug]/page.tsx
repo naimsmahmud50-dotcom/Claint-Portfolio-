@@ -96,7 +96,7 @@ export default async function CaseStudyPage({
             {project.isPrivateRepo && (
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-amber-950/40 border border-amber-500/35 text-xs sm:text-sm font-mono text-amber-300 shadow-md shadow-amber-950/20">
                 <Lock className="w-4 h-4 text-amber-400" />
-                <span>Proprietary Security Architecture • Protected Under NDA</span>
+                <span>{project.accessNotice || "Proprietary Architecture • Protected Under NDA"}</span>
               </div>
             )}
             {project.links.live && (
@@ -107,7 +107,7 @@ export default async function CaseStudyPage({
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-electric-600 to-cyan hover:from-electric-500 hover:to-cyan text-white text-xs sm:text-sm font-semibold shadow-lg shadow-electric-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
-                <span>Visit Live Platform</span>
+                <span>{project.links.live.startsWith("/images") ? "View High-Res Showcase" : "Visit Live Platform"}</span>
               </a>
             )}
           </div>
@@ -244,10 +244,10 @@ export default async function CaseStudyPage({
                 <span>OFFICIAL GITHUB REPOSITORY</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
-                Inspect The Production Codebase
+                Inspect The Project Repository
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
-                Review the clean architecture, modular Flutter/NestJS controllers, database schemas, and state management implementation directly on GitHub.
+                Review the project structure, documentation, and implementation details directly on GitHub.
               </p>
             </div>
             <a
@@ -271,10 +271,10 @@ export default async function CaseStudyPage({
                 <span>ENTERPRISE PROPRIETARY ARCHITECTURE</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
-                Workstation Security Core (Protected Under NDA)
+                Confidential Client Architecture (Protected Under NDA)
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
-                Source code and internal intrusion detection algorithms are proprietary. A live architecture walkthrough and technical deep-dive are available for enterprise clients upon request.
+                Detailed financial models and client-specific algorithms are proprietary. A live walkthrough and demonstration are available upon request.
               </p>
             </div>
             <Link

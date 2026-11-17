@@ -27,8 +27,8 @@ export function ContactSection() {
     name: "",
     email: "",
     subject: "",
-    serviceType: "AI Automation",
-    budget: "$1,000 – $3,000 (Sprint)",
+    serviceType: "MS Excel Modeling & Formulas",
+    budget: "Flexible / Discuss Scope First",
     timeline: "1 – 2 Weeks",
     message: "",
     honeypot: "", // Spam prevention honeypot
@@ -39,8 +39,8 @@ export function ContactSection() {
     name: "",
     email: "",
     subject: "",
-    serviceType: "AI Automation",
-    budget: "$1,000 – $3,000 (Sprint)",
+    serviceType: "MS Excel Modeling & Formulas",
+    budget: "Flexible / Discuss Scope First",
     timeline: "1 – 2 Weeks",
     message: "",
   });
@@ -288,7 +288,7 @@ export function ContactSection() {
                 </div>
                 <h4 className="text-sm font-semibold text-slate-100">15-Min Strategy Discovery Call</h4>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Book a direct video consultation (Google Meet / Zoom) to discuss sprint requirements, technical architecture, or emergency bug fixes.
+                  Book a direct consultation (Google Meet / Zoom / Phone) to discuss spreadsheet automation, accounting setup, presentation decks, or marketing funnels.
                 </p>
               </div>
 
@@ -478,13 +478,15 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
-                        <option value="AI Automation">AI Automation</option>
-                        <option value="AI Agent Development">AI Agent Development</option>
-                        <option value="Business Workflow Automation">Business Workflow Automation</option>
-                        <option value="AI-Powered Web Application">AI-Powered Web Application</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="App Development">App Development</option>
-                        <option value="Security Consultation">Security Consultation</option>
+                        <option value="MS Excel Modeling & Formulas">MS Excel Modeling & Formulas</option>
+                        <option value="Practical Accounting & Bookkeeping">Practical Accounting & Bookkeeping</option>
+                        <option value="Payroll Processing & Salary Management">Payroll Processing & Salary Management</option>
+                        <option value="Executive MS Word Documentation">Executive MS Word Documentation</option>
+                        <option value="Corporate PowerPoint Pitch Decks">Corporate PowerPoint Pitch Decks</option>
+                        <option value="Meta Marketing & Lead Generation">Meta Marketing & Lead Generation</option>
+                        <option value="Graphic Design & Packaging Mockups">Graphic Design & Packaging Mockups</option>
+                        <option value="Video Editing & Content Creation">Video Editing & Content Creation</option>
+                        <option value="AI Automation & Workflows">AI Automation & Workflows</option>
                         <option value="Other Inquiries">Other Inquiries</option>
                       </select>
                     </div>
@@ -502,11 +504,10 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
-                        <option value="$1,000 – $3,000 (Sprint)">$1,000 – $3,000 (Rapid Sprint)</option>
-                        <option value="$3,000 – $5,000 (Full-Stack / Mobile)">$3,000 – $5,000 (Full-Stack / Mobile App)</option>
-                        <option value="$5,000+ (Enterprise Architecture)">$5,000+ (Enterprise Architecture)</option>
-                        <option value="< $1,000 (Advisory / Quick Fix)">&lt; $1,000 (Advisory / Quick Fix)</option>
-                        <option value="Flexible / Scope First">Flexible / Scope First</option>
+                        <option value="Flexible / Discuss Scope First">Flexible / Discuss Scope First</option>
+                        <option value="Standard Task / Quick Setup">Standard Task / Quick Setup</option>
+                        <option value="Full Project / Dedicated Sprint">Full Project / Dedicated Sprint</option>
+                        <option value="Monthly Retainer / Ongoing Support">Monthly Retainer / Ongoing Support</option>
                       </select>
                     </div>
 

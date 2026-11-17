@@ -48,7 +48,7 @@ export function SkillsSection() {
             Skills &amp; Technology Stack
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
-            Transparent, balanced proficiencies across automation, development, cloud infrastructure, and security.
+            Transparent, practical proficiencies across MS Office applications, practical accounting, digital marketing, creative media, and ethical business workflows.
           </p>
         </div>
 

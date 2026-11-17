@@ -25,8 +25,8 @@ import {
   Cpu,
   User,
   Mail,
+  MessageSquare,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 import { primaryNavLinks, deepDiveModules, sitemapLinks } from "@/data/navigation";
 
 const getModuleIcon = (iconName: string) => {
@@ -199,27 +199,25 @@ export function Navbar() {
             {/* Subtle vertical hairline divider */}
             <div className="hidden sm:block w-px h-4 bg-slate-800 mx-1" />
 
-            {/* Social links */}
+            {/* Direct contact channels */}
             <div className="hidden sm:flex items-center gap-0.5">
               <a
-                href={profileData.socials.github}
+                href={profileData.socials.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Eyakub Mahmud's GitHub Profile"
-                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-lg transition-colors"
-                title="GitHub Profile"
+                aria-label="Chat with Eyakub Mahmud on WhatsApp"
+                className="p-1.5 text-slate-400 hover:text-emerald-400 hover:bg-slate-800/80 rounded-lg transition-colors"
+                title="WhatsApp Direct"
               >
-                <GithubIcon className="w-4 h-4" />
+                <MessageSquare className="w-4 h-4" />
               </a>
               <a
-                href={profileData.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Eyakub Mahmud's LinkedIn Profile"
-                className="p-1.5 text-slate-400 hover:text-[#0A66C2] hover:bg-slate-800/80 rounded-lg transition-colors"
-                title="LinkedIn Profile"
+                href={profileData.socials.email}
+                aria-label="Email Eyakub Mahmud"
+                className="p-1.5 text-slate-400 hover:text-cyan hover:bg-slate-800/80 rounded-lg transition-colors"
+                title="Email Direct"
               >
-                <LinkedinIcon className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
 
@@ -492,22 +490,20 @@ export function Navbar() {
                   <span className="font-mono text-slate-300">{profileData.contacts.primaryEmail}</span>
                   <div className="flex items-center gap-2">
                     <a
-                      href={profileData.socials.github}
+                      href={profileData.socials.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors"
-                      title="GitHub Profile"
+                      className="p-1.5 text-slate-400 hover:text-emerald-400 hover:bg-slate-800/60 rounded-lg transition-colors"
+                      title="WhatsApp Direct"
                     >
-                      <GithubIcon className="w-4 h-4" />
+                      <MessageSquare className="w-4 h-4" />
                     </a>
                     <a
-                      href={profileData.socials.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 text-slate-400 hover:text-[#0A66C2] hover:bg-slate-800/60 rounded-lg transition-colors"
-                      title="LinkedIn Profile"
+                      href={profileData.socials.email}
+                      className="p-1.5 text-slate-400 hover:text-cyan hover:bg-slate-800/60 rounded-lg transition-colors"
+                      title="Email Direct"
                     >
-                      <LinkedinIcon className="w-4 h-4" />
+                      <Mail className="w-4 h-4" />
                     </a>
                   </div>
                 </div>

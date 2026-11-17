@@ -1,7 +1,7 @@
-# User-agent rules for Mahmud Hasan Portfolio
+# User-agent rules for Eyakub Mahmud Portfolio
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://mahmudhasan.dev/sitemap.xml
+Sitemap: https://eyakubmahmud.vercel.app/sitemap.xml
