@@ -1,0 +1,493 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-canvas: #040711;
+    --bg-surface: #080E1E;
+    --bg-card: #0C152B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --accent-electric: #3B82F6;
+    --accent-cyan: #06B6D4;
+    --border-subtle: rgba(56, 189, 248, 0.18);
+  }
+
+  .light {
+    --bg-canvas: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --text-primary: #090D16;
+    --text-secondary: #334155;
+    --accent-electric: #2563EB;
+    --accent-cyan: #0284C7;
+    --border-subtle: rgba(226, 232, 240, 0.9);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Accessible Focus ring */
+  *:focus-visible {
+    outline: 2px solid #06B6D4;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced Motion Compliance (Section 30 & 35) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ambient Cosmic Nebula Mesh (Atmospheric Depth & Celestial Luxury) */
+.cosmic-nebula-mesh {
+  background: 
+    radial-gradient(ellipse 90% 60% at 15% -5%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 85% 15%, rgba(6, 182, 212, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(139, 92, 246, 0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, rgba(14, 165, 233, 0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 85% 55% at 85% 95%, rgba(99, 102, 241, 0.10) 0%, transparent 60%),
+    #050814;
+}
+
+/* Subtle tech grid background */
+.tech-grid-bg {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                    radial-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Pure Liquid Glassmorphic Surface (Apple VisionOS / macOS Sequoia Standard) */
+.tech-card {
+  background: linear-gradient(135deg, rgba(13, 22, 43, 0.65) 0%, rgba(8, 14, 28, 0.78) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 0 1px rgba(56, 189, 248, 0.08),
+    0 8px 32px 0 rgba(0, 0, 0, 0.45),
+    0 2px 8px 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(6, 182, 212, 0.35),
+    inset 0 0 0 1px rgba(6, 182, 212, 0.20),
+    0 16px 44px -4px rgba(6, 182, 212, 0.22),
+    0 4px 12px 0 rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+/* Luminous animated gradient text shimmer */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 200% auto;
+  animation: gradient-flow 5s ease-in-out infinite;
+}
+
+/* Terminal cursor blink */
+@keyframes terminal-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 0.85s infinite;
+}
+
+/* Cybernetic horizontal scan beam */
+@keyframes scan-beam {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-scan-beam {
+  animation: scan-beam 3s ease-in-out infinite;
+}
+
+/* =========================================================================
+   LUXURY WHITE / LIGHT MODE (Stripe, Linear & Apple Silicon Valley Standard)
+   ========================================================================= */
+html.light,
+.light body {
+  background-color: #F8FAFC !important;
+  color: #090D16 !important;
+}
+
+/* Atmospheric Ambient Canvas Layer */
+.light .cosmic-nebula-mesh {
+  background: 
+    radial-gradient(ellipse 90% 60% at 15% -5%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 85% 15%, rgba(2, 132, 199, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, rgba(14, 165, 233, 0.03) 0%, transparent 55%),
+    #F8FAFC !important;
+}
+
+.light .tech-grid-bg {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px),
+                    radial-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px, 64px 64px !important;
+  background-color: #F8FAFC !important;
+}
+
+/* Attenuate celestial canvas stars in light mode for crisp editorial airiness */
+.light canvas:not(.interactive-chart) {
+  opacity: 0.12 !important;
+}
+
+/* =========================================================================
+   PURE LIQUID GLASS SURFACE (Apple VisionOS / macOS Sequoia Standard)
+   Translucent silk glass, specular top edge bevel, refractive blur & lift
+   ========================================================================= */
+.light .tech-card:not(.hero-terminal) {
+  background: rgba(255, 255, 255, 0.70) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(226, 232, 240, 0.60),
+    0 4px 20px -2px rgba(15, 23, 42, 0.04),
+    0 14px 36px -4px rgba(2, 132, 199, 0.08) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.light .tech-card:not(.hero-terminal):hover {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(2, 132, 199, 0.50) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.98),
+    inset 0 0 0 1px rgba(2, 132, 199, 0.25),
+    0 20px 48px -6px rgba(2, 132, 199, 0.18),
+    0 8px 18px -2px rgba(15, 23, 42, 0.05) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Nested Frosted Glass Inset Capsules inside Cards (Measurable Outcome, etc.) */
+.light .tech-card [class*="bg-slate-900"],
+.light .tech-card [class*="bg-slate-950"] {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.80) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.90) !important;
+}
+
+.light .tech-card [class*="bg-slate-800"],
+.light .tech-card span[class*="bg-slate-900"] {
+  background: rgba(241, 245, 249, 0.75) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.80) !important;
+}
+
+/* General Container & Card Overrides outside tech-card (Protecting Hero Terminal) */
+.light div:not(.tech-card):not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-950"],
+.light div:not(.tech-card):not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-900"],
+.light div:not(.tech-card):not(.hero-terminal):not(.hero-terminal *) [class*="bg-canvas-deep"],
+.light div:not(.tech-card):not(.hero-terminal):not(.hero-terminal *) [class*="bg-canvas"] {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-color: rgba(226, 232, 240, 0.90) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 8px 24px -4px rgba(15, 23, 42, 0.04);
+}
+
+.light div:not(.tech-card):not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-800"] {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* =========================================================================
+   TYPOGRAPHY & CONTRAST HIERARCHY (WCAG AAA Precision)
+   ========================================================================= */
+/* Obsidian Headings & Titles */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-100"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-200"] {
+  color: #090D16 !important;
+}
+
+/* Deep Slate Body Copy */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-300"] {
+  color: #334155 !important;
+}
+
+/* Crisp Subtitles & Metadata */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-400"] {
+  color: #475569 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-500"] {
+  color: #64748B !important;
+}
+
+/* Brand Accents Translated for White Backgrounds */
+.light div:not(.hero-terminal):not(.hero-terminal *) .text-cyan,
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-cyan"] {
+  color: #0284C7 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-emerald-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-emerald-300"] {
+  color: #059669 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-emerald-950"] {
+  background-color: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-pink-950"] {
+  background-color: #FDF2F8 !important;
+  border-color: #FBCFE8 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-purple-950"] {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-amber-950"] {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-blue-950"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-electric-950"] {
+  background-color: #EFF6FF !important;
+  border-color: #BFDBFE !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-pink-400"] {
+  color: #DB2777 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-purple-300"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-purple-400"] {
+  color: #7C3AED !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-amber-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-amber-300"] {
+  color: #D97706 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-electric-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-electric-300"] {
+  color: #2563EB !important;
+}
+
+/* =========================================================================
+   HERO TERMINAL (Authentic Dark Titanium Sandbox Isolation)
+   Preserved with midnight IDE contrast in both Light and Dark themes
+   ========================================================================= */
+.light .hero-terminal {
+  background-color: #070B14 !important;
+  border: 1px solid rgba(51, 65, 85, 0.7) !important;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.light .hero-terminal * {
+  border-color: inherit;
+}
+
+.light .hero-terminal [class*="bg-slate-950"] {
+  background-color: #070B14 !important;
+}
+
+.light .hero-terminal [class*="bg-slate-900"] {
+  background-color: #0D1527 !important;
+}
+
+.light .hero-terminal [class*="bg-slate-800"] {
+  background-color: #17233B !important;
+}
+
+.light .hero-terminal [class*="text-slate-100"] {
+  color: #F8FAFC !important;
+}
+
+.light .hero-terminal [class*="text-slate-200"] {
+  color: #E2E8F0 !important;
+}
+
+.light .hero-terminal [class*="text-slate-300"] {
+  color: #94A3B8 !important;
+}
+
+.light .hero-terminal [class*="text-slate-400"] {
+  color: #64748B !important;
+}
+
+.light .hero-terminal .text-cyan,
+.light .hero-terminal [class*="text-cyan"] {
+  color: #22D3EE !important;
+}
+
+.light .hero-terminal [class*="text-emerald"] {
+  color: #34D399 !important;
+}
+
+.light .hero-terminal [class*="text-purple"] {
+  color: #C084FC !important;
+}
+
+/* =========================================================================
+   EXECUTIVE NAVBAR & DOCK IN LIGHT MODE
+   ========================================================================= */
+.light header {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.light header nav {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+}
+
+.light header nav a:not([class*="bg-cyan"]) {
+  color: #475569 !important;
+}
+
+.light header nav a:not([class*="bg-cyan"]):hover {
+  color: #090D16 !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.light header nav a[class*="bg-cyan"] {
+  background-color: #FFFFFF !important;
+  color: #0284C7 !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  box-shadow: 0 2px 8px -1px rgba(2, 132, 199, 0.15) !important;
+}
+
+.light header [class*="bg-slate-900/80"] {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+}
+
+/* Logo emblem inner container in header */
+.light header [class*="bg-slate-950"] {
+  background-color: #070B14 !important;
+}
+
+.light header [class*="bg-slate-950"] span {
+  color: #22D3EE !important;
+}
+
+/* Slide-over systems drawer & Modals */
+.light [class*="bg-slate-950/95"],
+.light [class*="bg-slate-900/95"],
+.light [role="dialog"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.16) !important;
+}
+
+/* Form Inputs in Light Mode */
+.light input,
+.light textarea,
+.light select {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #090D16 !important;
+}
+
+.light select option {
+  background-color: #FFFFFF !important;
+  color: #090D16 !important;
+}
+
+.light input:focus,
+.light textarea:focus,
+.light select:focus {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Scrollbars in Light Mode */
+.light ::-webkit-scrollbar-track {
+  background: #F1F5F9 !important;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1 !important;
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8 !important;
+}
