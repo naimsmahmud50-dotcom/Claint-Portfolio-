@@ -10,68 +10,35 @@ import {
   X,
   Sun,
   Moon,
-  Terminal,
   Search,
-  Workflow,
-  ShieldCheck,
-  GraduationCap,
-  Sparkles,
   ArrowRight,
-  LayoutGrid,
-  Zap,
-  FileText,
-  Layers,
-  FolderGit2,
-  Cpu,
-  User,
   Mail,
   MessageSquare,
+  Phone,
 } from "lucide-react";
-import { primaryNavLinks, deepDiveModules, sitemapLinks } from "@/data/navigation";
-
-const getModuleIcon = (iconName: string) => {
-  switch (iconName) {
-    case "Workflow":
-      return Workflow;
-    case "ShieldCheck":
-      return ShieldCheck;
-    case "Zap":
-      return Zap;
-    case "FolderGit2":
-      return FolderGit2;
-    case "Layers":
-      return Layers;
-    case "Cpu":
-      return Cpu;
-    case "User":
-      return User;
-    case "GraduationCap":
-      return GraduationCap;
-    case "Mail":
-      return Mail;
-    default:
-      return Sparkles;
-  }
-};
+import { primaryNavLinks } from "@/data/navigation";
 
 export function Navbar() {
   const pathname = usePathname();
   const { setTheme, isDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [systemsDrawerOpen, setSystemsDrawerOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Close drawers when navigating to a new route
+  // Mount animation trigger for slide-down entrance
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Close mobile drawer when navigating to a new route
   useEffect(() => {
     setMobileMenuOpen(false);
-    setSystemsDrawerOpen(false);
   }, [pathname]);
 
-  // Close drawers on Escape key
+  // Close mobile drawer on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setSystemsDrawerOpen(false);
         setMobileMenuOpen(false);
       }
     };
@@ -80,9 +47,9 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Lock body scroll when any drawer is active
+  // Lock body scroll when mobile menu is active
   useEffect(() => {
-    if (systemsDrawerOpen || mobileMenuOpen) {
+    if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -90,9 +57,9 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [systemsDrawerOpen, mobileMenuOpen]);
+  }, [mobileMenuOpen]);
 
-  // Track header scroll state for backdrop styling
+  // Track header scroll state for backdrop styling & elevation
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -117,494 +84,247 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-950/85 dark:bg-canvas-deep/90 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-xl shadow-black/30"
-          : "bg-transparent py-4 sm:py-5"
+      className={`fixed top-0 left-0 right-0 z-40 pointer-events-none transition-all duration-500 ease-out ${
+        mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        
-        {/* Brand identity: Corporate Executive Emblem */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-slate-100 hover:text-cyan transition-colors group shrink-0"
+      {/* Outer padding container that smoothly adjusts on scroll */}
+      <div
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+          scrolled ? "pt-2.5 sm:pt-3" : "pt-4 sm:pt-5"
+        }`}
+      >
+        {/* Floating Island Glass Capsule */}
+        <div
+          className={`pointer-events-auto transition-all duration-300 ease-out rounded-2xl lg:rounded-full border flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 ${
+            scrolled
+              ? "bg-slate-950/90 dark:bg-slate-950/90 backdrop-blur-2xl border-slate-700/80 dark:border-slate-800/80 shadow-2xl shadow-black/50"
+              : "bg-slate-950/75 dark:bg-slate-950/75 backdrop-blur-xl border-slate-700/50 dark:border-white/[0.12] shadow-xl shadow-black/30"
+          }`}
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-500 via-cyan to-teal-400 flex items-center justify-center p-[1.5px] shadow-lg shadow-cyan/25 group-hover:scale-105 group-hover:shadow-cyan/40 transition-all">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <span className="font-mono font-bold text-sm text-cyan group-hover:text-white transition-colors">
-                EM
-              </span>
+          {/* Brand Identity: Sleek Monogram & Name */}
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 sm:gap-3 text-slate-100 hover:text-cyan transition-colors group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan rounded-lg"
+            aria-label="Eyakub Mahmud - Home"
+          >
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-electric-500 via-cyan to-teal-400 p-[1.5px] shadow-md shadow-cyan/30 group-hover:scale-105 group-hover:shadow-cyan/50 transition-all duration-200">
+              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                <span className="font-mono font-bold text-xs sm:text-sm text-cyan group-hover:text-white transition-colors">
+                  EM
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col">
+
             <div className="flex items-center gap-2">
-              <span className="font-bold tracking-tight text-base sm:text-lg text-slate-100 group-hover:text-cyan transition-colors">
-                Eyakub Mahmud
+              <span className="font-bold tracking-tight text-sm sm:text-base text-white group-hover:text-cyan transition-colors">
+                {profileData.name}
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-[10px] font-mono font-semibold text-emerald-400 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[11px] font-mono font-semibold text-emerald-400 shadow-sm">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                </span>
                 <span>Available</span>
               </span>
             </div>
-            <span className="text-[11px] font-mono text-slate-300 font-medium hidden md:block">
-              MS Office • Excel • Accounting • AI Automation
-            </span>
-          </div>
-        </Link>
+          </Link>
 
-        {/* Desktop Navigation: 6 Frontline Pillars with discrete Next.js page routing */}
-        <nav
-          className="hidden lg:flex items-center gap-1 xl:gap-1.5 px-3 py-1.5 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-inner"
-          aria-label="Main Navigation"
-        >
-          {primaryNavLinks.map((item) => {
-            const isActive = isItemActive(item.href);
+          {/* Desktop Navigation: Centered Sleek Floating Pill Menu */}
+          <nav
+            className="hidden lg:flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/60 backdrop-blur-md"
+            aria-label="Main Navigation"
+          >
+            {primaryNavLinks.map((item) => {
+              const isActive = isItemActive(item.href);
 
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-                  isActive
-                    ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-xs xl:text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan ${
+                    isActive
+                      ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
+                      : "text-slate-300 hover:text-white hover:bg-slate-800/80"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* Right Action Bar: Unified Executive Control Dock & Primary CTA */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          
-          {/* Executive Utility Dock: Unified frosted capsule */}
-          <div className="flex items-center bg-slate-900/80 border border-slate-800/90 rounded-2xl p-1 backdrop-blur-xl shadow-inner shadow-black/20">
-            {/* Search trigger with ⌘K */}
+          {/* Right Minimalist Utility Dock */}
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {/* Quick Search Trigger (Cmd+K) */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
               aria-label="Open Command Palette (Ctrl+K)"
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-300 hover:text-cyan hover:bg-slate-800/80 transition-all text-xs font-mono group cursor-pointer"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-slate-300 hover:text-cyan hover:bg-slate-800/80 border border-slate-700/60 hover:border-cyan/40 transition-all text-xs font-mono group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
               title="Search portfolio & actions (Ctrl+K)"
             >
               <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan transition-colors" />
-              <span className="hidden 2xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100">Search</span>
-              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-800/90 text-[10px] text-slate-300 group-hover:text-cyan border border-slate-700/80 font-mono font-medium">
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300 group-hover:text-cyan border border-slate-700 font-mono font-medium">
                 ⌘K
               </kbd>
             </button>
 
-            {/* Subtle vertical hairline divider */}
-            <div className="hidden sm:block w-px h-4 bg-slate-800 mx-1" />
+            {/* Subtle Divider */}
+            <div className="w-px h-4 bg-slate-800 hidden sm:block" />
 
-            {/* Direct contact channels */}
-            <div className="hidden sm:flex items-center gap-0.5">
-              <a
-                href={profileData.socials.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat with Eyakub Mahmud on WhatsApp"
-                className="p-1.5 text-slate-400 hover:text-emerald-400 hover:bg-slate-800/80 rounded-lg transition-colors"
-                title="WhatsApp Direct"
-              >
-                <MessageSquare className="w-4 h-4" />
-              </a>
-              <a
-                href={profileData.socials.email}
-                aria-label="Email Eyakub Mahmud"
-                className="p-1.5 text-slate-400 hover:text-cyan hover:bg-slate-800/80 rounded-lg transition-colors"
-                title="Email Direct"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Subtle vertical hairline divider */}
-            <div className="w-px h-4 bg-slate-800 mx-1" />
-
-            {/* Theme Toggle */}
+            {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
               aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-              className="p-1.5 text-slate-400 hover:text-amber-300 hover:bg-slate-800/80 rounded-lg transition-colors cursor-pointer"
+              className="p-2 text-slate-400 hover:text-amber-300 hover:bg-slate-800/80 rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
               title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
+              {isDark ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-300" />
+              )}
             </button>
 
-            {/* Subtle vertical hairline divider */}
-            <div className="w-px h-4 bg-slate-800 mx-1" />
-
-            {/* Systems / Deep-Dive Modules Drawer Trigger Icon */}
+            {/* Mobile Hamburger Menu Toggle */}
             <button
-              onClick={() => setSystemsDrawerOpen(true)}
-              aria-label="Open systems and deep-dive modules drawer"
-              aria-expanded={systemsDrawerOpen}
-              title="All Modules: Pipeline, Security, Sprints & Sitemap"
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono group cursor-pointer ${
-                systemsDrawerOpen
-                  ? "bg-cyan/20 text-cyan border border-cyan/40"
-                  : "text-slate-300 hover:text-cyan hover:bg-slate-800/80"
-              }`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+              className="lg:hidden p-2 text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-xl transition-colors cursor-pointer ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
             >
-              <LayoutGrid className="w-4 h-4 text-cyan group-hover:scale-110 transition-transform" />
-              <span className="hidden xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100 font-medium">
-                Modules
-              </span>
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
-
-          {/* Standalone Executive Primary CTA Button */}
-          <button
-            onClick={() => {
-              if (typeof window !== "undefined") {
-                window.dispatchEvent(
-                  new CustomEvent("open-discovery-modal", {
-                    detail: { sprint: "Strategy Discovery Session" },
-                  })
-                );
-              }
-            }}
-            className="relative group overflow-hidden px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 dark:from-cyan dark:via-teal-400 dark:to-blue-500 text-white dark:text-slate-950 font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-500/20 dark:shadow-cyan/20 hover:shadow-blue-500/40 dark:hover:shadow-cyan/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 cursor-pointer"
-          >
-            <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <Sparkles className="w-3.5 h-3.5 fill-current text-white dark:text-slate-950 shrink-0" />
-            <span className="font-semibold text-white dark:text-slate-950">Let&apos;s Talk</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white dark:text-slate-950 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </button>
-
-          {/* Mobile hamburger menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="lg:hidden p-2 text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors cursor-pointer"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
       </div>
 
       {/* =========================================================================
-          EXECUTIVE SYSTEMS SLIDE-OVER DRAWER (Desktop & Tablet Deep-Dive Navigator)
+          MOBILE RESPONSIVE GLASS DRAWER
           ========================================================================= */}
-      {systemsDrawerOpen && (
-        <div className="fixed inset-0 z-50">
-          {/* Backdrop blur overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-50 pointer-events-auto lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+        >
+          {/* Backdrop overlay */}
           <div
-            onClick={() => setSystemsDrawerOpen(false)}
-            className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-in fade-in duration-200 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-slate-950/60 dark:bg-black/75 backdrop-blur-sm transition-opacity animate-in fade-in duration-200 cursor-pointer"
             aria-hidden="true"
           />
 
-          {/* Slide-over panel pinned to the right edge */}
-          <div className="fixed inset-y-0 right-0 max-w-full flex pl-8 sm:pl-10">
-            <div className="w-screen max-w-md bg-slate-950/95 border-l border-slate-800/90 shadow-2xl backdrop-blur-2xl p-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
-              
-              <div>
-                {/* Drawer Header */}
-                <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-cyan/15 border border-cyan/40 flex items-center justify-center text-cyan shadow-sm shadow-cyan/20">
-                      <LayoutGrid className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h2 className="text-base font-bold text-slate-100">Executive Systems</h2>
-                      <p className="text-xs text-slate-300 font-mono">Specialized Architectures &amp; Modules</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setSystemsDrawerOpen(false)}
-                    className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
-                    aria-label="Close systems drawer"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Section 1: Deep-Dive Specialized Architecture Systems */}
-                <div className="mt-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
-                      Specialized Architecture Systems
-                    </span>
-                    <span className="text-[10px] font-mono text-cyan bg-cyan/10 px-2 py-0.5 rounded-full border border-cyan/30 font-medium">
-                      Deep Dive
+          {/* Centered Floating Glass Dropdown Card */}
+          <div className="fixed top-20 inset-x-4 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 border border-slate-200/90 dark:border-slate-800/90 shadow-2xl backdrop-blur-2xl rounded-2xl p-5 animate-in slide-in-from-top-3 duration-300 max-h-[85vh] overflow-y-auto">
+            {/* Mobile Drawer Header */}
+            <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-slate-200/80 dark:border-slate-800/80">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-electric-500 via-cyan to-teal-400 p-[1.5px] flex items-center justify-center">
+                  <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[6px] flex items-center justify-center">
+                    <span className="font-mono font-bold text-[11px] text-cyan-700 dark:text-cyan">
+                      EM
                     </span>
                   </div>
-
-                  <div className="space-y-2.5">
-                    {deepDiveModules.map((item) => {
-                      const Icon = getModuleIcon(item.iconName);
-                      const isActive = isItemActive(item.href);
-
-                      return (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          onClick={() => setSystemsDrawerOpen(false)}
-                          className={`group block p-3.5 rounded-2xl border transition-all ${
-                            isActive
-                              ? "bg-slate-900 border-cyan/50 shadow-md shadow-cyan/10"
-                              : "bg-slate-900/60 border-slate-800/80 hover:bg-slate-900 hover:border-slate-700"
-                          }`}
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-start gap-3">
-                              <div className={`w-9 h-9 rounded-xl ${item.bg} border flex items-center justify-center shrink-0 mt-0.5`}>
-                                <Icon className={`w-4 h-4 ${item.color}`} />
-                              </div>
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-sm font-semibold text-slate-100 group-hover:text-cyan transition-colors">
-                                    {item.name}
-                                  </span>
-                                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-medium">
-                                    {item.badge}
-                                  </span>
-                                </div>
-                                <p className="text-xs text-slate-300 mt-1 leading-relaxed font-normal">
-                                  {item.description}
-                                </p>
-                              </div>
-                            </div>
-                            <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
                 </div>
-
-                {/* Section 2: Executive Tools & Shortcuts */}
-                <div className="mt-6 pt-5 border-t border-slate-800/80">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold block mb-3">
-                    Executive Tools &amp; Actions
-                  </span>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => {
-                        setSystemsDrawerOpen(false);
-                        window.dispatchEvent(new CustomEvent("open-resume-modal"));
-                      }}
-                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
-                    >
-                      <FileText className="w-4 h-4 text-amber-400 shrink-0" />
-                      <div>
-                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
-                          Executive CV
-                        </div>
-                        <div className="text-[10px] text-slate-400">View &amp; PDF</div>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setSystemsDrawerOpen(false);
-                        window.dispatchEvent(
-                          new CustomEvent("open-discovery-modal", {
-                            detail: { sprint: "Executive Systems Call" },
-                          })
-                        );
-                      }}
-                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
-                    >
-                      <Sparkles className="w-4 h-4 text-cyan shrink-0" />
-                      <div>
-                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
-                          Book Call
-                        </div>
-                        <div className="text-[10px] text-slate-400">15-min sprint</div>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setSystemsDrawerOpen(false);
-                        window.dispatchEvent(new CustomEvent("open-command-palette"));
-                      }}
-                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
-                    >
-                      <Search className="w-4 h-4 text-purple-400 shrink-0" />
-                      <div>
-                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
-                          Command Bar
-                        </div>
-                        <div className="text-[10px] text-slate-400">Ctrl + K</div>
-                      </div>
-                    </button>
-
-                    <Link
-                      href="/"
-                      onClick={() => setSystemsDrawerOpen(false)}
-                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
-                    >
-                      <Terminal className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <div>
-                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
-                          Dev Terminal
-                        </div>
-                        <div className="text-[10px] text-slate-400">Interactive CLI</div>
-                      </div>
-                    </Link>
+                <div>
+                  <div className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                    {profileData.name}
                   </div>
-                </div>
-
-                {/* Section 3: Full Portfolio Directory Sitemap */}
-                <div className="mt-6 pt-5 border-t border-slate-800/80">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold block mb-3">
-                    Full Portfolio Directory
-                  </span>
-
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {sitemapLinks.map((item) => {
-                      const isActive = isItemActive(item.href);
-
-                      return (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          onClick={() => setSystemsDrawerOpen(false)}
-                          className={`text-xs px-2.5 py-2 rounded-lg transition-colors flex items-center justify-between ${
-                            isActive
-                              ? "bg-cyan/15 text-cyan font-semibold border border-cyan/30"
-                              : "text-slate-300 hover:text-white hover:bg-slate-900 font-medium"
-                          }`}
-                        >
-                          <span>{item.name}</span>
-                          {isActive && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />
-                          )}
-                        </Link>
-                      );
-                    })}
+                  <div className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Available for work</span>
                   </div>
                 </div>
               </div>
 
-              {/* Drawer Bottom Bar */}
-              <div className="pt-6 mt-6 border-t border-slate-800/80">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono text-slate-300">{profileData.contacts.primaryEmail}</span>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={profileData.socials.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 text-slate-400 hover:text-emerald-400 hover:bg-slate-800/60 rounded-lg transition-colors"
-                      title="WhatsApp Direct"
-                    >
-                      <MessageSquare className="w-4 h-4" />
-                    </a>
-                    <a
-                      href={profileData.socials.email}
-                      className="p-1.5 text-slate-400 hover:text-cyan hover:bg-slate-800/60 rounded-lg transition-colors"
-                      title="Email Direct"
-                    >
-                      <Mail className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* =========================================================================
-          MOBILE COMPREHENSIVE DRAWER
-          ========================================================================= */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/98 border-b border-slate-800 backdrop-blur-2xl px-6 py-6 animate-in slide-in-from-top-2 max-h-[85vh] overflow-y-auto">
-          <div className="space-y-6">
-            
-            {/* Group 1: Frontline Core Offerings */}
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
-                Core Offerings
-              </span>
-              <div className="grid grid-cols-1 gap-1">
-                {primaryNavLinks.map((item) => {
-                  const isActive = isItemActive(item.href);
-
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`text-sm py-2.5 px-3.5 rounded-xl transition-all flex items-center justify-between ${
-                        isActive
-                          ? "bg-cyan/15 text-cyan border border-cyan/40 font-semibold"
-                          : "text-slate-200 hover:text-white hover:bg-slate-900 font-medium"
-                      }`}
-                    >
-                      <span>{item.name}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Group 2: Specialized Engineering Architecture */}
-            <div className="pt-4 border-t border-slate-800/80">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
-                Specialized Systems &amp; Architecture
-              </span>
-              <div className="grid grid-cols-1 gap-1.5">
-                {deepDiveModules.map((item) => {
-                  const Icon = getModuleIcon(item.iconName);
-                  const isActive = isItemActive(item.href);
-
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`p-3 rounded-xl transition-all flex items-center justify-between ${
-                        isActive
-                          ? "bg-cyan/15 text-cyan border border-cyan/40 font-semibold"
-                          : "text-slate-200 hover:text-white hover:bg-slate-900 font-medium"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Icon className={`w-4 h-4 ${item.color}`} />
-                        <div>
-                          <div className="text-sm font-semibold text-slate-100">{item.name}</div>
-                          <div className="text-xs text-slate-300 font-normal">{item.description}</div>
-                        </div>
-                      </div>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Mobile Actions */}
-            <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (typeof window !== "undefined") {
-                    window.dispatchEvent(
-                      new CustomEvent("open-discovery-modal", {
-                        detail: { sprint: "Mobile Discovery Call" },
-                      })
-                    );
-                  }
-                }}
-                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 text-slate-950 font-bold text-sm text-center shadow-lg shadow-cyan/20 flex items-center justify-center gap-2 cursor-pointer"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+                className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
               >
-                <Sparkles className="w-4 h-4 fill-slate-950" />
-                <span>Book 15-Min Discovery Call</span>
-                <ArrowRight className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
+            {/* Mobile Search Row */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.dispatchEvent(new CustomEvent("open-command-palette"));
+              }}
+              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-600 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-cyan hover:border-cyan/40 transition-all mb-4 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+            >
+              <div className="flex items-center gap-2">
+                <Search className="w-4 h-4 text-slate-400 group-hover:text-cyan-700 dark:group-hover:text-cyan transition-colors" />
+                <span>Search portfolio & actions...</span>
+              </div>
+              <kbd className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-[10px] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                ⌘K
+              </kbd>
+            </button>
+
+            {/* Mobile Nav Links */}
+            <div className="space-y-1">
+              {primaryNavLinks.map((item) => {
+                const isActive = isItemActive(item.href);
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`min-h-[44px] px-3.5 py-2.5 rounded-xl transition-all flex items-center justify-between text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan ${
+                      isActive
+                        ? "bg-cyan-500/15 dark:bg-cyan/15 text-cyan-700 dark:text-cyan border border-cyan-500/30 dark:border-cyan/40 font-semibold shadow-sm shadow-cyan/10"
+                        : "text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/90 dark:hover:bg-slate-900/70 font-medium"
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                    <ArrowRight
+                      className={`w-4 h-4 transition-transform ${
+                        isActive
+                          ? "text-cyan-700 dark:text-cyan"
+                          : "text-slate-400 dark:text-slate-500 group-hover:translate-x-1"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Footer Channels */}
+            <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between text-xs">
+              <span className="font-mono text-slate-500 dark:text-slate-400 text-[11px] truncate max-w-[190px]">
+                {profileData.contacts.primaryEmail}
+              </span>
+              <div className="flex items-center gap-1.5">
+                <a
+                  href={profileData.socials.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat on WhatsApp"
+                  className="p-2 text-slate-500 dark:text-slate-400 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                </a>
+                <a
+                  href={profileData.socials.email}
+                  aria-label="Send Email"
+                  className="p-2 text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+                <a
+                  href={profileData.socials.phone}
+                  aria-label="Call Direct"
+                  className="p-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                >
+                  <Phone className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}

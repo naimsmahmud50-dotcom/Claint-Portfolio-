@@ -5,6 +5,7 @@ import { credentialsData } from "@/data/credentials";
 import { sanitizeOrigin, sanitizePlainText } from "@/utils/sanitize";
 import { contactSchema, parseContactSubmission } from "@/utils/contact-schema";
 import { validateContactSubmission } from "@/utils/contact-validation";
+import { primaryNavLinks } from "@/data/navigation";
 
 describe("Profile Data Validation", () => {
   it("has correct owner identity and direct contact channels", () => {
@@ -94,3 +95,26 @@ describe("Projects & Credentials Integrity", () => {
     expect(completed.length).toBe(2);
   });
 });
+
+describe("Navigation & Header Integrity", () => {
+  it("has exactly 6 curated primary frontline navigation links", () => {
+    expect(primaryNavLinks.length).toBe(6);
+    const linkNames = primaryNavLinks.map((l) => l.name);
+    expect(linkNames).toEqual([
+      "Projects",
+      "Services",
+      "Skills",
+      "About",
+      "Credentials",
+      "Contact",
+    ]);
+  });
+
+  it("ensures all primary navigation links have valid routes without dead hash links", () => {
+    for (const link of primaryNavLinks) {
+      expect(link.href.startsWith("/")).toBe(true);
+      expect(link.href).not.toBe("#");
+    }
+  });
+});
+
