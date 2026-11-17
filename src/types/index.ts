@@ -100,7 +100,7 @@ export interface Project {
   };
   isPrivateRepo?: boolean;
   accessNotice?: string;
-  status: "In Active Development" | "Production Concept" | "Exploratory Architecture" | "Completed Credential Build";
+  status: "In Active Development" | "Production Concept" | "Exploratory Architecture" | "Completed Credential Build" | "Production Verified";
   caseStudy: CaseStudy;
 }
 

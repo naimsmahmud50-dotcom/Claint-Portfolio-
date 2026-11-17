@@ -5,7 +5,8 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { projectsData } from "@/data/projects";
 import { ProjectCategory } from "@/types";
 import { ProjectCard } from "../projects/ProjectCard";
-import { FolderGit2, Search, ExternalLink, Share2 } from "lucide-react";
+import { ProjectSlider } from "../projects/ProjectSlider";
+import { FolderGit2, Search, ExternalLink, Share2, Layers } from "lucide-react";
 import { profileData } from "@/data/profile";
 
 const categories: ProjectCategory[] = [
@@ -98,18 +99,34 @@ function ProjectsContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
-              <FolderGit2 className="w-3.5 h-3.5" />
-              <span>01 // SELECTED PROJECTS</span>
+        <div className="max-w-3xl mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
+            <FolderGit2 className="w-3.5 h-3.5" />
+            <span>01 // PORTFOLIO SHOWCASE</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
+            Featured Case Studies &amp; Projects
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            High-precision Microsoft Office solutions, formula-driven Excel automation, practical accounting &amp; payroll systems, and executive pitch deck designs built for business growth.
+          </p>
+        </div>
+
+        {/* Flagship 3-Project Interactive Slider */}
+        <div className="mb-20">
+          <ProjectSlider />
+        </div>
+
+        {/* Section Subheader for Full Repository */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pt-8 border-t border-slate-800/80">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan mb-2">
+              <Layers className="w-3.5 h-3.5 text-cyan" />
+              <span>COMPLETE CLIENT REPOSITORY</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-              Featured Case Studies &amp; Projects
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-              Scalable, security-conscious systems designed to automate workflows and solve real operational problems.
-            </p>
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
+              Browse All Projects &amp; Solutions
+            </h3>
           </div>
 
           {/* Search Bar with Bidirectional URL State */}
@@ -119,7 +136,7 @@ function ProjectsContent() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
-              placeholder="Search by tech or keyword..."
+              placeholder="Filter by skill, formula, tool..."
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-xs sm:text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
             />
           </div>

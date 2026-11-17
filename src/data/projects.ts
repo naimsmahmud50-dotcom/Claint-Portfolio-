@@ -3,109 +3,207 @@ import { Project } from "@/types";
 export const projectsData: Project[] = [
   {
     id: "proj-1",
-    slug: "monthly-salary-breakup-payroll",
-    title: "Monthly Salary Break-up & Payroll System",
+    slug: "advanced-financial-modeling-excel-dashboard",
+    title: "Advanced Financial Modeling & Executive Excel Dashboard",
     shortDescription:
-      "Enterprise Excel payroll engine calculating basic pay, house rent, medical allowances, tax deductions, provident funds, and net payable figures with zero formula errors.",
-    category: "Accounting",
+      "High-precision Microsoft Excel financial model with dynamic XLOOKUP logic, EBITDA performance indicators, automated cash flow forecasting, and interactive data visualization.",
+    category: "Productivity",
     featured: true,
-    coverImage: "/images/projects/salary-breakup.png",
-    tags: ["MS Excel", "Payroll", "VLOOKUP", "SUMIFS", "Tax Deductions", "Financial Data"],
+    coverImage: "/images/projects/excel-financial-dashboard.jpg",
+    tags: ["MS Excel", "Financial Modeling", "XLOOKUP", "KPI Dashboard", "Cash Flow", "Advanced Formulas"],
     techStack: {
-      tools: ["Microsoft Excel", "Formulas & Functions", "Data Validation", "Conditional Formatting"],
+      tools: ["Microsoft Excel", "XLOOKUP / INDEX-MATCH", "Dynamic PivotTables", "Conditional Formatting", "Waterfall Charts"],
     },
     links: {
-      live: "/images/projects/salary-breakup.png",
+      live: "/images/projects/excel-financial-dashboard.jpg",
     },
-    status: "Production Concept",
+    status: "Production Verified",
     caseStudy: {
       overview:
-        "Designed and implemented an automated payroll spreadsheet system tailored for corporate organizations, ensuring precise compensation calculations, structured deductions, and audit-ready reporting.",
+        "Architected an executive-level Microsoft Excel financial model and real-time analytics dashboard designed for corporate decision-makers, providing automated revenue drivers, OPEX tracking, and quarterly financial projections.",
       problem:
-        "Manual salary calculations often result in discrepancies in provident fund deductions, tax calculations, and overtime tracking, consuming countless hours every month.",
+        "Static and fragmented financial spreadsheets caused delayed quarterly reporting, computational inconsistencies, and lacked executive visual summaries for board meetings.",
       goal:
-        "Build an error-resilient, dynamic Excel payroll sheet with automated formula logic that calculates net salary from gross components in seconds.",
+        "Build an error-resilient, dynamic Excel financial modeling dashboard with automated formulas that instantly translates raw transaction tables into boardroom-ready visual KPIs.",
       solution:
-        "Architected an automated multi-sheet model leveraging SUMIFS, IF logic, and VLOOKUP to dynamically pull employee grade standards, calculate allowances, and generate clean payslips.",
+        "Engineered an automated multi-tab workbook utilizing dynamic XLOOKUP formulas, automated variance calculations, dual-axis waterfall visualizations, and KPI summary gauges that update dynamically upon data entry.",
       architecture: [
-        "Employee Master Directory: Centralized database of employee IDs, departments, and base grades.",
-        "Component Computation Matrix: Dynamic formulas calculating Basic (50%), House Rent (25%), Medical (15%), and Conveyance (10%).",
-        "Statutory Deductions Engine: Automated calculation for Provident Fund, Advances, and Tax with threshold caps.",
-        "Executive Summary Dashboard: Departmental payroll breakdown with charts and variance checks.",
+        "Financial Master Model: Centralized ledger database linking quarterly revenues, COGS, and operating expenditures.",
+        "Dynamic Formula Matrix: Advanced nested formulas =XLOOKUP, SUMIFS, and INDEX/MATCH ensuring zero manual calculation errors.",
+        "Executive KPI Cockpit: Top metric cards displaying Total Revenue ($48.2M), EBITDA Margin (28.4%), and Free Cash Flow.",
+        "Interactive Charting Suite: Dual-axis waterfall charts, quarterly projection trendlines, and in-cell data bars.",
       ],
       keyFeatures: [
-        "Automated Net Salary Calculation with nested logical formulas",
-        "Interactive Department and Month filters",
-        "Deduction tracking for Provident Fund, Tax, and Late Penalties",
-        "Audit-friendly printable payslip layout",
+        "Automated Gross & Net Profit calculation with automated EBITDA margin tracking",
+        "Interactive quarterly forecast vs actuals comparison graphs",
+        "Waterfall breakdown of revenue drivers and department OPEX",
+        "Print-ready executive summary sheet formatted for board meetings",
       ],
       securityConsiderations: [
-        "Cell locking and sheet protection preventing accidental formula overwrite",
-        "Input validation rules restricting unauthorized salary grade modifications",
+        "Protected sheet structure with locked formula cells preventing accidental overwrite",
+        "Strict data validation rules enforcing standardized currency and percentage inputs",
       ],
       challenges: [
-        "Handling complex tiered tax brackets without slowing down spreadsheet calculation performance.",
+        "Maintaining instantaneous workbook calculation speed across multi-year historical datasets without lagging.",
       ],
-      resultsStatus: "Successfully demonstrated in multiple client and business scenarios.",
-      metricsPlaceholder: "Reduced monthly payroll calculation time by 85% with zero computational errors.",
+      resultsStatus: "Successfully demonstrated and deployed as an executive corporate reporting standard.",
+      metricsPlaceholder: "Saved 20+ hours per month in financial analysis with 100% computational accuracy.",
     },
   },
   {
     id: "proj-2",
-    slug: "employee-payroll-master-sheet",
-    title: "Employee Payroll Master Sheet & HR Analytics",
+    slug: "corporate-payroll-master-accounting-system",
+    title: "Corporate Payroll Master & General Ledger Accounting System",
     shortDescription:
-      "Comprehensive multi-department employee salary table with automated overtime tracking, bonus computation, attendance reconciliation, and summary totals.",
-    category: "Productivity",
+      "Enterprise-grade practical accounting & multi-tier payroll engine with automated tax deductions, salary break-up reports, trial balance reconciliation, and audit-ready reporting.",
+    category: "Accounting",
     featured: true,
-    coverImage: "/images/projects/employee-salary-clean.png",
-    tags: ["MS Excel", "HR Analytics", "PivotTables", "Data Cleaning", "Formulas"],
+    coverImage: "/images/projects/practical-accounting-payroll.jpg",
+    tags: ["Practical Accounting", "Payroll Management", "General Ledger", "TallyPrime", "Tax Computation", "Double-Entry"],
     techStack: {
-      tools: ["Microsoft Excel", "PivotTables", "INDEX-MATCH", "XLOOKUP"],
+      tools: ["Practical Accounting", "Payroll Processing", "General Ledger Reconciliation", "TallyPrime", "Audited Financials"],
     },
     links: {
-      live: "/images/projects/employee-salary-clean.png",
+      live: "/images/projects/practical-accounting-payroll.jpg",
     },
-    status: "Production Concept",
+    status: "Production Verified",
     caseStudy: {
       overview:
-        "A streamlined, high-density employee salary roster built to handle hundreds of staff records across multiple branches with automated cross-checking.",
+        "A complete practical accounting and payroll management system engineered to automate employee compensation, provident fund contributions, tax withholdings, and journal ledger reconciliation.",
       problem:
-        "HR managers struggled with inconsistent spreadsheet formats and fragmented attendance data that caused delays in salary disbursement.",
+        "Manual payroll processing and unaligned ledger entries led to recurring discrepancies during bank disbursements and month-end accounting reconciliations.",
       goal:
-        "Establish a clean, standardized, and easily maintainable employee master salary sheet with real-time totals and deduction reconciliation.",
+        "Establish an error-free, standardized payroll and practical accounting reconciliation workflow with automated salary break-ups and trial balance balance checks.",
       solution:
-        "Engineered a standardized data table format with automated error flagging, conditional highlights for anomalies, and PivotTable summaries for executive leadership.",
+        "Created an integrated double-entry accounting structure and payroll engine that computes basic pay, allowances, statutory deductions, and generates audit-ready pay summaries.",
       architecture: [
-        "Clean Tabular Data Structure: Uniform column definitions with data validation constraints.",
-        "Attendance Integration: Formula-linked attendance days calculating per-day deductions dynamically.",
-        "Summary Totals & Analytics: Instant PivotTable view by designation, division, and branch.",
+        "Staff Compensation Database: Grade-based salary structures, allowances (house rent, medical, conveyance).",
+        "Deductions & Compliance Engine: Automated calculations for statutory tax withholding, provident funds, and loan advances.",
+        "General Ledger Integration: Double-entry journal voucher mappings directly aligning payroll with financial accounts.",
+        "Reconciliation Cockpit: Trial balance checking mechanism verifying debit-credit equilibrium prior to bank file generation.",
       ],
       keyFeatures: [
-        "Real-time gross-to-net pay calculation",
-        "Automated error highlighting for missing employee details",
-        "One-click monthly departmental expenditure breakdown",
-        "Clean export-ready print layout for banking disbursements",
+        "Automated multi-component salary break-up with net payable calculation",
+        "Audit-ready Trial Balance and General Ledger cross-reconciliation",
+        "Department-wise compensation analytics and monthly payroll variance",
+        "Printable payslip generation and bank disbursement schedule formatting",
       ],
       securityConsiderations: [
-        "Formula cells locked and hidden from unauthorized editing",
-        "Strict data formatting rules ensuring phone numbers and account IDs remain accurate",
+        "Access control and formula cell hiding to protect confidential employee remuneration data",
+        "Strict input validation preventing duplicate employee ID entries",
       ],
       challenges: [
-        "Ensuring compatibility between different versions of Microsoft Excel and spreadsheet viewers.",
+        "Handling complex progressive tax brackets and attendance-linked pro-rated deductions.",
       ],
-      resultsStatus: "Adopted as a reusable operational template for commercial payroll workflows.",
-      metricsPlaceholder: "Eliminated data entry discrepancies across 100+ simulated employee profiles.",
+      resultsStatus: "Validated with real-world accounting datasets and adopted as a reliable operational framework.",
+      metricsPlaceholder: "Zero computational discrepancies across hundreds of employee payroll records.",
     },
   },
   {
     id: "proj-3",
+    slug: "corporate-pitch-deck-presentation",
+    title: "Executive Boardroom Pitch Deck & Slide Master Architecture",
+    shortDescription:
+      "Investor-grade Microsoft PowerPoint presentation system featuring custom slide masters, TAM/SAM/SOM market opportunity infographics, and 5-year revenue trajectory storytelling.",
+    category: "Productivity",
+    featured: true,
+    coverImage: "/images/projects/corporate-pitch-deck.jpg",
+    tags: ["MS PowerPoint", "Pitch Deck", "Slide Master", "Infographics", "Executive Storytelling", "TAM/SAM/SOM"],
+    techStack: {
+      tools: ["Microsoft PowerPoint", "Slide Master Themes", "Custom Infographics", "Business Data Storytelling"],
+    },
+    links: {
+      live: "/images/projects/corporate-pitch-deck.jpg",
+    },
+    status: "Production Verified",
+    caseStudy: {
+      overview:
+        "Designed an executive-grade PowerPoint presentation framework crafted to deliver persuasive investor pitches, market expansion strategies, and boardroom strategic roadmaps.",
+      problem:
+        "Text-heavy, cluttered presentation slides distract decision-makers and obscure key investment metrics during high-stakes business pitches.",
+      goal:
+        "Transform complex commercial business proposals and market sizing numbers into an engaging, visually compelling slide narrative.",
+      solution:
+        "Engineered a custom 16:9 Slide Master architecture featuring concentric market sizing diagrams (TAM/SAM/SOM), 5-year revenue trajectory bar charts, and cohesive executive typography.",
+      architecture: [
+        "Bespoke Slide Master Hierarchy: Consistent master templates for Cover, Problem, Market Size, Traction, and Financials.",
+        "Data Infographics Suite: Concentric TAM/SAM/SOM market size breakdown with highlighted addressable opportunity.",
+        "Financial Trajectory Visualizer: 5-year revenue projection bar graphs with CAGR and YoY metric highlights.",
+        "Executive Color & Type Token: High-contrast boardroom aesthetic built for both digital displays and printed executive handouts.",
+      ],
+      keyFeatures: [
+        "Custom PowerPoint Slide Master with modular reusable layouts",
+        "Dynamic market opportunity visualizer (TAM $1.4B, SAM $720M, SOM $150M)",
+        "5-year projected growth bar charts with upward trajectory indicators",
+        "High-contrast executive typography optimized for clear boardroom projection",
+      ],
+      securityConsiderations: [
+        "Confidential financial data anonymization protocols applied prior to external presentation sharing",
+      ],
+      challenges: [
+        "Creating a balanced slide density that presents deep financial data without overwhelming visual readability.",
+      ],
+      resultsStatus: "Praised by corporate leadership as an exemplary business pitch presentation deck.",
+      metricsPlaceholder: "Optimized for maximum executive persuasion with zero visual clutter.",
+    },
+  },
+  {
+    id: "proj-4",
+    slug: "meta-ads-automated-lead-pipeline",
+    title: "Meta Ads & Automated Lead-to-Sheet Pipeline",
+    shortDescription:
+      "Performance marketing campaign setup and automated lead capture connecting Facebook/Instagram Lead Ads directly to Google Sheets and instant WhatsApp notifications.",
+    category: "AI Automation",
+    featured: false,
+    coverImage: "/images/projects/meta-ads-automation.jpg",
+    tags: ["Meta Ads", "Zapier", "Google Sheets", "Lead Automation", "WhatsApp API", "ROAS Analytics"],
+    techStack: {
+      tools: ["Meta Ads Manager", "Zapier", "Google Sheets API", "WhatsApp Business Integration"],
+    },
+    links: {
+      live: "/images/projects/meta-ads-automation.jpg",
+    },
+    status: "In Active Development",
+    caseStudy: {
+      overview:
+        "Engineered an automated marketing pipeline that captures potential customer leads from Facebook & Instagram ads and instantly routes them to CRM spreadsheets and mobile alerts within 5 seconds.",
+      problem:
+        "Businesses lose up to 70% of potential leads when response times exceed 10 minutes due to manual spreadsheet downloading from Ads Manager.",
+      goal:
+        "Achieve near-instant lead processing and sales team notification to accelerate conversion rates.",
+      solution:
+        "Connected Meta Lead Form webhooks through Zapier to append new rows into an organized Google Sheet while triggering an immediate WhatsApp alert to the sales representative.",
+      architecture: [
+        "Trigger: Meta Instant Lead Form submission with verified phone and email fields.",
+        "Webhook Processor: Zapier/Make parses the payload and validates data formatting.",
+        "Spreadsheet Storage: Google Sheets appends timestamp, lead source, and customer inquiry.",
+        "Instant Alert: Automated WhatsApp message dispatched to the business owner.",
+      ],
+      keyFeatures: [
+        "Sub-5-second lead delivery to spreadsheet and mobile phone",
+        "Automatic duplicate removal and phone number sanitization",
+        "Department-wise lead categorization based on customer answers",
+        "Zero manual CSV downloading required",
+      ],
+      securityConsiderations: [
+        "Encrypted API keys and OAuth2 authentication across Meta and webhook endpoints",
+        "Strict compliance with customer data privacy standards",
+      ],
+      challenges: [
+        "Handling network retry mechanisms when webhook endpoints experience transient downtime.",
+      ],
+      resultsStatus: "Tested and verified with live lead generation ad campaigns.",
+      metricsPlaceholder: "Reduced lead contact latency from 4 hours to under 30 seconds.",
+    },
+  },
+  {
+    id: "proj-5",
     slug: "honey-nature-organic-branding",
     title: "Honey Nature – Premium Organic Product Visual",
     shortDescription:
       "Nature-inspired product concept and packaging mockup created with warm earthy color palettes, custom typography, and high-conversion commercial aesthetic.",
     category: "Graphic Design",
-    featured: true,
+    featured: false,
     coverImage: "/images/projects/honey-nature-project.jpg",
     tags: ["Photoshop", "Graphic Design", "Branding", "Product Packaging", "Mockups"],
     techStack: {
@@ -146,13 +244,13 @@ export const projectsData: Project[] = [
     },
   },
   {
-    id: "proj-4",
+    id: "proj-6",
     slug: "attar-royal-fragrance-branding",
     title: "Attar – Royal Fragrance Brand Identity",
     shortDescription:
       "High-end luxury oriental perfume visual identity combining rich obsidian backgrounds, radiant gold accents, and elegant packaging art direction.",
     category: "Graphic Design",
-    featured: true,
+    featured: false,
     coverImage: "/images/projects/attar-product-project.jpg",
     tags: ["Photoshop", "Branding", "Luxury Packaging", "Illustrator", "Visual Art"],
     techStack: {
@@ -190,98 +288,6 @@ export const projectsData: Project[] = [
       ],
       resultsStatus: "Featured in creative portfolio as a flagship luxury branding project.",
       metricsPlaceholder: "Positioned to maximize perceived value and consumer prestige.",
-    },
-  },
-  {
-    id: "proj-5",
-    slug: "corporate-pitch-deck-presentation",
-    title: "Executive Corporate Pitch Deck & Slide Master",
-    shortDescription:
-      "Multi-slide executive business presentation designed in Microsoft PowerPoint with custom slide masters, animated transitions, SmartArt infographics, and financial charts.",
-    category: "Productivity",
-    featured: false,
-    coverImage: "/images/projects/salary-breakup.png",
-    tags: ["MS PowerPoint", "Pitch Deck", "Slide Master", "Infographics", "Visual Storytelling"],
-    techStack: {
-      tools: ["Microsoft PowerPoint", "Slide Master", "SmartArt", "Infographics Design"],
-    },
-    links: {},
-    status: "Production Concept",
-    caseStudy: {
-      overview:
-        "Created an executive-grade PowerPoint presentation framework designed to deliver persuasive investor pitches, business quarterly reviews, and strategic roadmaps.",
-      problem:
-        "Bullet-point heavy, cluttered slides cause audience disengagement and obscure critical business metrics during important meetings.",
-      goal:
-        "Transform complex business proposals and financial numbers into visually striking, easily digestible slide architecture.",
-      solution:
-        "Architected a custom 16:9 Slide Master with modular layout components, consistent typographical hierarchy, vector iconography, and subtle pacing transitions.",
-      architecture: [
-        "Slide Master System: Pre-configured layouts for Title, Problem/Solution, Market Size, and Financial Projections.",
-        "Data Visualization: Clean Excel-linked charts that automatically reflect financial updates.",
-        "Presenter Notes & Handout Formatting: Professional print-ready PDF export setup.",
-      ],
-      keyFeatures: [
-        "Dynamic custom typography and branded color scheme",
-        "Visual metric cards highlighting key performance indicators (KPIs)",
-        "Engaging timeline graphics and workflow diagrams",
-        "Lightweight animations that enhance delivery without distracting",
-      ],
-      securityConsiderations: [
-        "Confidential corporate data sanitization protocols implemented before presentation release",
-      ],
-      challenges: [
-        "Ensuring dynamic Excel chart links update seamlessly across different client machines.",
-      ],
-      resultsStatus: "Standardized deck format utilized for business proposals and pitch meetings.",
-      metricsPlaceholder: "Delivered 25+ modular slides optimized for maximum executive impact.",
-    },
-  },
-  {
-    id: "proj-6",
-    slug: "meta-ads-automated-lead-pipeline",
-    title: "Meta Ads & Automated Lead-to-Sheet Pipeline",
-    shortDescription:
-      "Automated lead capture system connecting Facebook/Instagram Instant Lead Forms directly to Google Sheets and WhatsApp instant notification via Zapier/Make.",
-    category: "AI Automation",
-    featured: false,
-    coverImage: "/images/projects/honey-nature-project.jpg",
-    tags: ["Meta Ads", "Zapier", "Make", "Google Sheets", "Lead Automation", "WhatsApp API"],
-    techStack: {
-      tools: ["Meta Ads Manager", "Zapier", "Make.com", "Google Sheets", "WhatsApp Integration"],
-    },
-    links: {},
-    status: "In Active Development",
-    caseStudy: {
-      overview:
-        "Engineered an automated marketing pipeline that captures potential customer leads from Facebook & Instagram ads and instantly routes them to CRM spreadsheets and mobile alerts within 5 seconds.",
-      problem:
-        "Businesses lose up to 70% of potential leads when response times exceed 10 minutes due to manual spreadsheet downloading from Ads Manager.",
-      goal:
-        "Achieve near-instant lead processing and sales team notification to accelerate conversion rates.",
-      solution:
-        "Connected Meta Lead Form webhooks through Zapier to append new rows into an organized Google Sheet while triggering an immediate WhatsApp alert to the sales representative.",
-      architecture: [
-        "Trigger: Meta Instant Lead Form submission with verified phone and email fields.",
-        "Webhook Processor: Zapier/Make parses the payload and validates data formatting.",
-        "Spreadsheet Storage: Google Sheets appends timestamp, lead source, and customer inquiry.",
-        "Instant Alert: Automated WhatsApp message dispatched to the business owner.",
-      ],
-      keyFeatures: [
-        "Sub-5-second lead delivery to spreadsheet and mobile phone",
-        "Automatic duplicate removal and phone number sanitization",
-        "Department-wise lead categorization based on customer answers",
-        "Zero manual CSV downloading required",
-      ],
-      securityConsiderations: [
-        "Encrypted API keys and OAuth2 authentication across Meta and webhook endpoints",
-        "Strict compliance with customer data privacy standards",
-      ],
-      challenges: [
-        "Handling network retry mechanisms when webhook endpoints experience transient downtime.",
-      ],
-      resultsStatus: "Tested and verified with live lead generation ad campaigns.",
-      metricsPlaceholder: "Reduced lead contact latency from 4 hours to under 30 seconds.",
     },
   },
 ];

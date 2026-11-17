@@ -52,9 +52,9 @@ const domainCards: DomainCard[] = [
     hoverBorder: "hover:border-cyan/50",
     glowColor: "from-cyan/20 to-transparent",
     features: [
-      "Monthly Salary Break-up & Payroll System",
-      "Employee Payroll Master Sheet & HR Analytics",
-      "Honey Nature & Royal Attar Packaging",
+      "Advanced Financial Modeling & Excel Dashboard",
+      "Corporate Payroll Master & General Ledger System",
+      "Executive Boardroom Pitch Deck Presentation",
     ],
     ctaLabel: "View All Projects",
   },
