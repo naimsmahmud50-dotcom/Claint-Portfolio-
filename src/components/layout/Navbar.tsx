@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "../providers/ThemeProvider";
+import { useLanguage } from "../providers/LanguageProvider";
 import { profileData } from "@/data/profile";
 import {
   Menu,
@@ -19,11 +20,18 @@ import {
 import { primaryNavLinks } from "@/data/navigation";
 
 export function Navbar() {
+  const { t, language, toggleLanguage } = useLanguage();
   const pathname = usePathname();
   const { setTheme, isDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Update nav links dynamically
+  const navLinks = primaryNavLinks.map(link => ({
+    ...link,
+    name: t.navbar.navLinks[link.targetId as keyof typeof t.navbar.navLinks] || link.name
+  }));
 
   // Mount animation trigger for slide-down entrance
   useEffect(() => {
@@ -125,7 +133,7 @@ export function Navbar() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
                 </span>
-                <span>Available</span>
+                <span>{t.navbar.available}</span>
               </span>
             </div>
           </Link>
@@ -135,7 +143,7 @@ export function Navbar() {
             className="hidden lg:flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/60 backdrop-blur-md"
             aria-label="Main Navigation"
           >
-            {primaryNavLinks.map((item) => {
+            {navLinks.map((item) => {
               const isActive = isItemActive(item.href);
 
               return (
@@ -159,9 +167,9 @@ export function Navbar() {
             {/* Quick Search Trigger (Cmd+K) */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
-              aria-label="Open Command Palette (Ctrl+K)"
+              aria-label={t.navbar.searchTitle}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full text-slate-300 hover:text-cyan hover:bg-slate-800/80 border border-slate-700/60 hover:border-cyan/40 transition-all text-xs font-mono group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
-              title="Search portfolio & actions (Ctrl+K)"
+              title={t.navbar.searchTitle}
             >
               <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan transition-colors" />
               <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300 group-hover:text-cyan border border-slate-700 font-mono font-medium">
@@ -184,6 +192,17 @@ export function Navbar() {
               ) : (
                 <Moon className="w-4 h-4 text-slate-300" />
               )}
+            </button>
+
+            {/* Language Toggle Button */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-3 py-1 rounded-full bg-slate-900/90 border border-cyan-500/40 text-[10px] font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+              aria-label="Toggle language"
+            >
+              <span className={language === "bn" ? "text-cyan" : "text-slate-500"}>BN</span>
+              <span className="text-slate-600">/</span>
+              <span className={language === "en" ? "text-cyan" : "text-slate-500"}>EN</span>
             </button>
 
             {/* Mobile Hamburger Menu Toggle */}
@@ -258,16 +277,27 @@ export function Navbar() {
             >
               <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-slate-400 group-hover:text-cyan-700 dark:group-hover:text-cyan transition-colors" />
-                <span>Search portfolio & actions...</span>
+                <span>{t.navbar.searchPlaceholder}</span>
               </div>
               <kbd className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-[10px] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
                 ⌘K
               </kbd>
             </button>
 
+            {/* Mobile Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:border-cyan/40 transition-all mb-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+              aria-label="Toggle language"
+            >
+              <span className={language === "bn" ? "text-cyan-700 dark:text-cyan" : "text-slate-400"}>BN</span>
+              <span className="text-slate-400">/</span>
+              <span className={language === "en" ? "text-cyan-700 dark:text-cyan" : "text-slate-400"}>EN</span>
+            </button>
+
             {/* Mobile Nav Links */}
             <div className="space-y-1">
-              {primaryNavLinks.map((item) => {
+              {navLinks.map((item) => {
                 const isActive = isItemActive(item.href);
 
                 return (

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { pipelineStepsData } from "@/data/pipeline";
+import { useLanguage } from "../providers/LanguageProvider";
 import {
   Workflow,
   HelpCircle,
@@ -79,6 +79,8 @@ const SIMULATION_TELEMETRY: Record<number, { phase: string; log: string }> = {
 };
 
 export function PipelineSection() {
+  const { t } = useLanguage();
+  const pipelineStepsData = t.systems.pipelineSteps;
   const [activeStep, setActiveStep] = useState<number>(3); // Defaults to AI & Logic step
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
   const [simulationLogs, setSimulationLogs] = useState<
@@ -160,10 +162,10 @@ export function PipelineSection() {
               <span>07 // ARCHITECTURAL PIPELINE</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-              How I Build Intelligent Systems
+              {t.systems.pipelineTitle}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-              An end-to-end interactive architecture: from unstructured real-world bottlenecks to deterministic, automated outcomes.
+              {t.systems.pipelineDescription}
             </p>
           </div>
 

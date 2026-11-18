@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { servicesData } from "@/data/services";
+import { useLanguage } from "../providers/LanguageProvider";
 import {
   Layers,
   Cpu,
@@ -14,8 +14,8 @@ import {
   Gauge,
   ShieldCheck,
   ArrowUpRight,
-  Wrench,
   ChevronDown,
+  FileText,
 } from "lucide-react";
 
 const getIcon = (iconName: string) => {
@@ -27,7 +27,7 @@ const getIcon = (iconName: string) => {
     case "Smartphone":
       return <Smartphone className="w-5 h-5 text-pink-400" />;
     case "Wrench":
-      return <Wrench className="w-5 h-5 text-amber-400" />;
+      return <Layers className="w-5 h-5 text-amber-400" />;
     case "Workflow":
       return <Workflow className="w-5 h-5 text-blue-400" />;
     case "Bot":
@@ -42,13 +42,17 @@ const getIcon = (iconName: string) => {
       return <Gauge className="w-5 h-5 text-indigo-400" />;
     case "ShieldCheck":
       return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
+    case "FileText":
+      return <FileText className="w-5 h-5 text-slate-400" />;
     default:
       return <Cpu className="w-5 h-5 text-cyan" />;
   }
 };
 
 export function ServicesSection() {
+  const { t } = useLanguage();
   const [showAllServices, setShowAllServices] = useState(false);
+  const servicesData = t.services.items;
 
   // Present the top 4 flagship offerings by default to prevent cognitive clutter
   const displayedServices = showAllServices ? servicesData : servicesData.slice(0, 4);
@@ -69,16 +73,16 @@ export function ServicesSection() {
             <span>02 // SERVICES &amp; CAPABILITIES</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Engineered Services &amp; Solutions
+            {t.services.title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-            Outcome-focused digital solutions: From advanced Excel modeling and practical accounting to executive documentation, commercial media, and intelligent workflow automations.
+            {t.services.description}
           </p>
         </div>
 
         {/* Dynamic Services Grid (4 Flagship Pillars or Full 10 Solutions) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {displayedServices.map((service) => (
+          {displayedServices.map((service, index) => (
             <div
               key={service.id}
               className="p-6 sm:p-7 rounded-3xl tech-card flex flex-col justify-between group transition-all"
@@ -89,7 +93,7 @@ export function ServicesSection() {
                     {getIcon(service.icon)}
                   </div>
                   <span className="font-mono text-xs text-slate-300 font-bold tracking-wider">
-                    {service.number}
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
 
@@ -105,7 +109,7 @@ export function ServicesSection() {
                 <div className="mt-4 p-3.5 rounded-2xl bg-white/50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md text-xs shadow-sm">
                   <span className="font-mono text-cyan font-bold block mb-1 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse" />
-                    <span>Measurable Outcome:</span>
+                    <span>{t.services.measurableOutcome}</span>
                   </span>
                   <span className="text-slate-800 dark:text-slate-200 font-medium leading-relaxed block">
                     {service.outcome}
@@ -130,7 +134,7 @@ export function ServicesSection() {
                   className="px-3 py-1.5 rounded-xl bg-white/70 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 text-slate-600 dark:text-slate-300 hover:text-cyan hover:border-cyan/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1 text-xs font-mono group/btn shadow-sm"
                   aria-label={`Inquire about ${service.title}`}
                 >
-                  <span className="font-semibold">Inquire</span>
+                  <span className="font-semibold">{t.services.inquire}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
@@ -146,8 +150,8 @@ export function ServicesSection() {
           >
             <span className="font-semibold">
               {showAllServices
-                ? "Show Core 4 Flagship Pillars"
-                : "Explore All 10 Specialized Solutions (APIs, AI, Admin Consoles, Security)"}
+                ? t.services.showLess
+                : t.services.showMore}
             </span>
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-200 group-hover:text-cyan ${

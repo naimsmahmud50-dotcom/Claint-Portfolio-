@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { EngagementSection } from "@/components/home/EngagementSection";
-import { RoiCalculator } from "@/components/ui/RoiCalculator";
 import { ArrowLeft, Sparkles, Layers, ShieldCheck, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -37,7 +36,6 @@ export default function ServicesPage() {
       <EngagementSection />
 
       {/* 3. Interactive ROI Calculator */}
-      <RoiCalculator />
 
       {/* Bottom Conversion CTA */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">

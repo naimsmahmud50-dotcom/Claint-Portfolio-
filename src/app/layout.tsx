@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/providers/ToastProvider";
 import { Navbar } from "@/components/layout/Navbar";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { Footer } from "@/components/layout/Footer";
 import { InteractiveBackground } from "@/components/ui/InteractiveBackground";
 import { CommandPalette } from "@/components/ui/CommandPalette";
@@ -98,18 +99,20 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-canvas dark:bg-canvas text-slate-100 selection:bg-cyan selection:text-slate-950 font-sans antialiased min-h-screen flex flex-col relative">
-        <ThemeProvider>
+                <ThemeProvider>
           <ToastProvider>
-            {/* Ambient Cosmic Nebula Mesh */}
-            <div className="fixed inset-0 pointer-events-none z-0 cosmic-nebula-mesh" aria-hidden="true" />
-            <InteractiveBackground />
-            <Navbar />
-            <div className="relative z-10 flex-grow">
-              {children}
-            </div>
-            <Footer />
-            <CommandPalette />
-            <DiscoveryModal />
+            <LanguageProvider>
+              {/* Ambient Cosmic Nebula Mesh */}
+              <div className="fixed inset-0 pointer-events-none z-0 cosmic-nebula-mesh" aria-hidden="true" />
+              <InteractiveBackground />
+              <Navbar />
+              <div className="relative z-10 flex-grow">
+                {children}
+              </div>
+              <Footer />
+              <CommandPalette />
+              <DiscoveryModal />
+            </LanguageProvider>
           </ToastProvider>
         </ThemeProvider>
       </body>

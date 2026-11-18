@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   :root {
     --bg-canvas: #040711;
@@ -139,6 +141,22 @@
   animation: gradient-flow 5s ease-in-out infinite;
 }
 
+/* Continuous marquee-flow animation */
+@keyframes marquee-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee-flow {
+  animation: marquee-flow 8s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* Terminal cursor blink */
 @keyframes terminal-blink {
   0%, 45% {
@@ -156,19 +174,6 @@
   animation: terminal-blink 0.85s infinite;
 }
 
-/* Cybernetic horizontal scan beam */
-@keyframes scan-beam {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-scan-beam {
-  animation: scan-beam 3s ease-in-out infinite;
-}
 
 /* =========================================================================
    LUXURY WHITE / LIGHT MODE (Stripe, Linear & Apple Silicon Valley Standard)

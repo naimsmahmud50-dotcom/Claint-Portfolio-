@@ -204,13 +204,13 @@ export const projectsData: Project[] = [
       "Nature-inspired product concept and packaging mockup created with warm earthy color palettes, custom typography, and high-conversion commercial aesthetic.",
     category: "Graphic Design",
     featured: false,
-    coverImage: "/images/projects/honey-nature-project.jpg",
+    coverImage: "/images/projects/honey-nature-premium-organic.jpg",
     tags: ["Photoshop", "Graphic Design", "Branding", "Product Packaging", "Mockups"],
     techStack: {
       tools: ["Adobe Photoshop", "Adobe Illustrator", "Color Theory", "Commercial Mockup"],
     },
     links: {
-      live: "/images/projects/honey-nature-project.jpg",
+      live: "/images/projects/honey-nature-premium-organic.jpg",
     },
     status: "Completed Credential Build",
     caseStudy: {
@@ -251,13 +251,13 @@ export const projectsData: Project[] = [
       "High-end luxury oriental perfume visual identity combining rich obsidian backgrounds, radiant gold accents, and elegant packaging art direction.",
     category: "Graphic Design",
     featured: false,
-    coverImage: "/images/projects/attar-product-project.jpg",
+    coverImage: "/images/projects/attar-royal-fragrance-luxury.jpg",
     tags: ["Photoshop", "Branding", "Luxury Packaging", "Illustrator", "Visual Art"],
     techStack: {
       tools: ["Adobe Photoshop", "Adobe Illustrator", "Brand Architecture", "Luxury Art Direction"],
     },
     links: {
-      live: "/images/projects/attar-product-project.jpg",
+      live: "/images/projects/attar-royal-fragrance-luxury.jpg",
     },
     status: "Completed Credential Build",
     caseStudy: {

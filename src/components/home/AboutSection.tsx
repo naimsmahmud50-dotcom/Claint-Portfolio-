@@ -21,9 +21,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ResumeModal } from "../ui/ResumeModal";
+import { useLanguage } from "../providers/LanguageProvider";
 
 export function AboutSection() {
   const [resumeOpen, setResumeOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-20 md:py-28 bg-slate-950/40 relative">
@@ -33,10 +35,10 @@ export function AboutSection() {
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <Terminal className="w-3.5 h-3.5" />
-            <span>04 // ABOUT EYAKUB</span>
+            <span>{t.about.title}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Precision MS Office, Practical Accounting &amp; Digital Solutions
+            {t.about.subtitle}
           </h2>
         </div>
 
@@ -45,7 +47,7 @@ export function AboutSection() {
           
           {/* Left Column: Authentic Executive Bio (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-slate-200 text-base sm:text-lg leading-relaxed">
-            {profileData.aboutBio.map((paragraph, idx) => (
+            {t.about.bioParagraphs.map((paragraph: string, idx: number) => (
               <p key={idx} className="text-slate-200 font-normal leading-relaxed">
                 {paragraph}
               </p>
@@ -58,9 +60,9 @@ export function AboutSection() {
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-cyan/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-electric-600/25 cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>View Executive Profile</span>
+                <span>{t.about.resumeBtn}</span>
                 <span className="text-[10px] font-mono bg-white/20 px-2 py-0.5 rounded font-bold">
-                  PDF / PRINT
+                  {t.about.pdfPrint}
                 </span>
               </button>
 

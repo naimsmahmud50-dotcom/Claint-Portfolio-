@@ -1,0 +1,15 @@
+export const heroSkills = [
+  { name: "Ps", label: "Photoshop" },
+  { name: "Ai", label: "Illustrator" },
+  { name: "Pr", label: "Premiere Pro" },
+  { name: "Ae", label: "After Effects" },
+  { name: "T", label: "TallyPrime" },
+  { name: "AI", label: "AI Automation" },
+  { name: "W", label: "MS Word" },
+  { name: "X", label: "Excel" },
+  { name: "P", label: "PowerPoint" },
+  { name: "Meta", label: "Meta Marketing" },
+  { name: "GPT", label: "ChatGPT" },
+  { name: "Gamma", label: "Gamma AI" },
+  { name: "Studio", label: "Studio" },
+];

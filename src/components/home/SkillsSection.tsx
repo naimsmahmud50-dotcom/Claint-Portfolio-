@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { skillCategoriesData } from "@/data/skills";
+import { useLanguage } from "../providers/LanguageProvider";
 import { ProficiencyLevel } from "@/types";
-import { Cpu, Terminal, Sparkles, Shield, Layers, Smartphone, Cloud, Check } from "lucide-react";
+import { Cpu, Shield } from "lucide-react";
 
 const getBadgeStyle = (level: ProficiencyLevel) => {
   switch (level) {
@@ -21,14 +21,15 @@ const getBadgeStyle = (level: ProficiencyLevel) => {
 };
 
 export function SkillsSection() {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ["All", ...skillCategoriesData.map((c) => c.title)];
+  const categories = ["All", ...t.skills.categories.map((c) => c.title)];
 
   const displayedCategories =
     selectedCategory === "All"
-      ? skillCategoriesData
-      : skillCategoriesData.filter((c) => c.title === selectedCategory);
+      ? t.skills.categories
+      : t.skills.categories.filter((c) => c.title === selectedCategory);
 
   return (
     <section id="skills" className="py-20 md:py-28 relative overflow-hidden">
@@ -45,10 +46,10 @@ export function SkillsSection() {
             <span>03 // TECHNICAL SKILLS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Skills &amp; Technology Stack
+            {t.skills.title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
-            Transparent, practical proficiencies across MS Office applications, practical accounting, digital marketing, creative media, and ethical business workflows.
+            {t.skills.subtitle}
           </p>
         </div>
 
@@ -93,7 +94,7 @@ export function SkillsSection() {
                     <div
                       key={skill.name}
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-medium transition-transform group-hover:scale-[1.01] ${getBadgeStyle(
-                        skill.level
+                        skill.level as ProficiencyLevel
                       )}`}
                     >
                       <span>{skill.name}</span>
@@ -107,7 +108,7 @@ export function SkillsSection() {
 
               {/* Card Footer legend */}
               <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
-                <span>{cat.skills.length} verified technologies</span>
+                <span>{cat.skills.length} {t.skills.categoryLegend}</span>
                 <span className="text-emerald-400">Active</span>
               </div>
             </div>
@@ -118,8 +119,8 @@ export function SkillsSection() {
         <div className="mt-8 p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center gap-3 text-xs sm:text-sm text-slate-300">
           <Shield className="w-4 h-4 text-cyan shrink-0" />
           <p>
-            <strong className="text-slate-100">Authenticity Commitment: </strong> 
-            Skills reflect practical application and active study. Tools and concepts are labeled according to genuine hands-on experience without inflated claims.
+            <strong className="text-slate-100">{t.skills.authenticity}</strong> 
+            {t.skills.authenticityDesc}
           </p>
         </div>
 

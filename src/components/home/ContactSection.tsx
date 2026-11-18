@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useLanguage } from "../providers/LanguageProvider";
 import { profileData } from "@/data/profile";
 import {
   Mail,
@@ -8,10 +9,7 @@ import {
   Copy,
   Send,
   CheckCircle2,
-  AlertCircle,
   ExternalLink,
-  ShieldAlert,
-  Sparkles,
   Calendar,
   Globe,
   Clock,
@@ -22,6 +20,7 @@ import { useToast } from "../providers/ToastProvider";
 import { contactSchema } from "@/utils/contact-schema";
 
 export function ContactSection() {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -55,16 +54,7 @@ export function ContactSection() {
     toast("WhatsApp number copied to clipboard!", "success");
   };
 
-  // Generate comprehensive, beautifully-formatted WhatsApp message containing full lead details
-  const getWhatsAppUrl = (data: {
-    name?: string;
-    email?: string;
-    serviceType?: string;
-    budget?: string;
-    timeline?: string;
-    subject?: string;
-    message?: string;
-  } = formData) => {
+  const getWhatsAppUrl = (data: any = formData) => {
     const parts = [
       `👋 *New Inquiry for Eyakub Mahmud*`,
       ``,
@@ -81,16 +71,7 @@ export function ContactSection() {
     return `https://wa.me/${profileData.contacts.whatsappNumber}?text=${encodeURIComponent(parts.join("\n"))}`;
   };
 
-  // Generate direct native email client dispatch URL (mailto) as instant backup
-  const getMailtoUrl = (data: {
-    name?: string;
-    email?: string;
-    serviceType?: string;
-    budget?: string;
-    timeline?: string;
-    subject?: string;
-    message?: string;
-  } = formData) => {
+  const getMailtoUrl = (data: any = formData) => {
     const name = data.name?.trim() || "Client";
     const email = data.email?.trim() || "Not provided";
     const subject = encodeURIComponent(
@@ -105,7 +86,6 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side schema validation using Zod
     const validation = contactSchema.safeParse(formData);
     if (!validation.success) {
       const firstIssue = validation.error.issues[0];
@@ -137,7 +117,6 @@ export function ContactSection() {
       setSubmitted(true);
       toast("Message dispatched to Eyakub's inbox! Thank you — I'll get back to you as soon as possible.", "success");
     } catch {
-      // Even if offline/network failure, keep data so user can send via WhatsApp or mailto
       setLastSubmittedData({ ...formData });
       setSubmitted(true);
       toast("Message prepared! You can also ping Eyakub directly via WhatsApp or Email.", "info");
@@ -157,10 +136,10 @@ export function ContactSection() {
             <span>10 // INITIATE DIALOGUE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Let's Build Something Intelligent
+            {t.contact.title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-            Have a project, workflow automation requirement, or collaboration in mind? Reach out directly.
+            {t.contact.desc}
           </p>
         </div>
 
@@ -177,10 +156,10 @@ export function ContactSection() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono text-cyan bg-cyan/10 border border-cyan/30 px-2 py-0.5 rounded font-bold">
-                    PRIMARY EMAIL
+                    {t.contact.primaryEmailLabel}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-100">Personal &amp; Business Inquiries</h4>
+                <h4 className="text-sm font-semibold text-slate-100">{t.contact.primaryEmailDesc}</h4>
                 <p className="text-xs sm:text-sm font-mono text-slate-200 mt-1 select-all">
                   {profileData.contacts.primaryEmail}
                 </p>
@@ -211,10 +190,10 @@ export function ContactSection() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono text-slate-300 bg-slate-850 px-2 py-0.5 rounded font-semibold border border-slate-700">
-                    SECONDARY EMAIL
+                    {t.contact.secondaryEmailLabel}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-100">Developer &amp; Tech Communications</h4>
+                <h4 className="text-sm font-semibold text-slate-100">{t.contact.secondaryEmailDesc}</h4>
                 <p className="text-xs sm:text-sm font-mono text-slate-200 mt-1 select-all">
                   {profileData.contacts.secondaryEmail}
                 </p>
@@ -237,7 +216,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* WhatsApp Card (Section 18 Dual Mode) */}
+            {/* WhatsApp Card */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 flex flex-col justify-between group">
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -245,10 +224,10 @@ export function ContactSection() {
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono text-emerald-300 bg-emerald-950 border border-emerald-500/30 px-2 py-0.5 rounded font-bold">
-                    INSTANT WHATSAPP
+                    {t.contact.whatsappLabel}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-100">Direct Messaging Channel</h4>
+                <h4 className="text-sm font-semibold text-slate-100">{t.contact.whatsappDesc}</h4>
                 <p className="text-xs sm:text-sm font-mono text-emerald-300 mt-1">
                   +880 1877-508893 <span className="text-[11px] text-slate-400 font-sans">({profileData.contacts.whatsappDisplay})</span>
                 </p>
@@ -283,12 +262,12 @@ export function ContactSection() {
                     <Calendar className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono text-cyan bg-cyan-950 border border-cyan-500/30 px-2 py-0.5 rounded font-bold">
-                    VIDEO CALL
+                    {t.contact.callLabel}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-100">15-Min Strategy Discovery Call</h4>
+                <h4 className="text-sm font-semibold text-slate-100">{t.contact.callTitle}</h4>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Book a direct consultation (Google Meet / Zoom / Phone) to discuss spreadsheet automation, accounting setup, presentation decks, or marketing funnels.
+                  {t.contact.callDesc}
                 </p>
               </div>
 
@@ -307,7 +286,7 @@ export function ContactSection() {
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-electric-600 to-cyan hover:from-electric-500 hover:to-cyan/90 text-white font-semibold text-xs transition-all shadow-md shadow-cyan/20 cursor-pointer"
                 >
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>Reserve 15-Min Time Slot</span>
+                  <span>{t.contact.callButton}</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                 </button>
               </div>
@@ -317,52 +296,51 @@ export function ContactSection() {
             <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-3">
               <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan">
                 <Globe className="w-4 h-4 text-cyan" />
-                <span>GLOBAL REMOTE ENGAGEMENT</span>
+                <span>{t.contact.globalEngagementTitle}</span>
               </div>
               <div className="space-y-2 text-xs text-slate-300 leading-relaxed">
                 <div className="flex items-start gap-2">
                   <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>Timezone Overlap:</strong> Active coverage for US EST (8 AM – 1 PM EST) &amp; Europe CET (2 PM – 7 PM CET).</span>
+                  <span>{t.contact.globalEngagementDesc}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <ShieldCheck className="w-3.5 h-3.5 text-cyan shrink-0 mt-0.5" />
-                  <span><strong>Response Guarantee:</strong> Inquiries acknowledged within &lt; 4 hours. NDA &amp; fixed-scope sprints ready.</span>
+                  <span><strong>{t.contact.responseGuarantee}</strong> {t.contact.responseGuaranteeDesc}</span>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Interactive Contact Form (7 cols) (Section 17 & 40) */}
+          {/* Right Column: Interactive Contact Form */}
           <div className="lg:col-span-7">
             <div className="p-8 rounded-3xl tech-card border-electric-500/25">
               
               {submitted ? (
-                /* Success State (Section 40) */
                 <div className="py-10 text-center flex flex-col items-center">
                   <div className="w-16 h-16 rounded-2xl bg-emerald-950 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 animate-in zoom-in">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-100">Inquiry Dispatched Successfully</h3>
+                  <h3 className="text-2xl font-bold text-slate-100">{t.contact.success.title}</h3>
                   <p className="mt-2 text-sm text-slate-300 max-w-md">
-                    Your inquiry has been routed to Eyakub's executive mailbox (<span className="text-cyan font-mono">{profileData.contacts.primaryEmail}</span>). Guaranteed response within 4 hours.
+                    {t.contact.success.desc} (<span className="text-cyan font-mono">{profileData.contacts.primaryEmail}</span>).
                   </p>
 
                   {/* Submission Summary Preview */}
                   {lastSubmittedData.name && (
                     <div className="w-full max-w-md mt-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-left text-xs space-y-1.5 font-mono">
                       <div className="flex justify-between text-slate-400 border-b border-slate-800/80 pb-1.5 mb-2">
-                        <span>TRANSMISSION SUMMARY</span>
+                        <span>{t.contact.success.summary}</span>
                         <span className="text-emerald-400 flex items-center gap-1 font-sans">
-                          <CheckCircle2 className="w-3 h-3" /> Queued
+                          <CheckCircle2 className="w-3 h-3" /> {t.contact.success.statusQueued}
                         </span>
                       </div>
-                      <p className="text-slate-200"><span className="text-slate-400">Client:</span> {lastSubmittedData.name}</p>
-                      <p className="text-slate-200"><span className="text-slate-400">Email:</span> {lastSubmittedData.email}</p>
-                      <p className="text-slate-200"><span className="text-slate-400">Service:</span> {lastSubmittedData.serviceType}</p>
-                      <p className="text-slate-200"><span className="text-slate-400">Budget:</span> {lastSubmittedData.budget}</p>
-                      <p className="text-slate-200"><span className="text-slate-400">Timeline:</span> {lastSubmittedData.timeline}</p>
-                      <p className="text-slate-200 truncate"><span className="text-slate-400">Subject:</span> {lastSubmittedData.subject}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">{t.contact.success.client}</span> {lastSubmittedData.name}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">{t.contact.success.email}</span> {lastSubmittedData.email}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">{t.contact.success.service}</span> {lastSubmittedData.serviceType}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">{t.contact.success.budget}</span> {lastSubmittedData.budget}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">{t.contact.success.timeline}</span> {lastSubmittedData.timeline}</p>
+                      <p className="text-slate-200 truncate"><span className="text-slate-400">{t.contact.success.subject}</span> {lastSubmittedData.subject}</p>
                     </div>
                   )}
 
@@ -375,14 +353,14 @@ export function ContactSection() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-semibold text-xs shadow-md shadow-emerald-950/50 transition-all hover:scale-[1.02]"
                     >
                       <MessageSquare className="w-4 h-4" />
-                      <span>Ping Instantly on WhatsApp</span>
+                      <span>{t.contact.success.whatsappButton}</span>
                     </a>
                     <a
                       href={getMailtoUrl(lastSubmittedData)}
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-xs text-slate-200 hover:text-white transition-all"
                     >
                       <Mail className="w-4 h-4" />
-                      <span>Open in Mail App</span>
+                      <span>{t.contact.success.mailButton}</span>
                     </a>
                     <button
                       type="button"
@@ -401,7 +379,7 @@ export function ContactSection() {
                       }}
                       className="px-4 py-2.5 rounded-xl bg-slate-900/50 hover:bg-slate-800 text-xs text-slate-400 hover:text-slate-200 transition-colors"
                     >
-                      Send Another Inquiry
+                      {t.contact.success.anotherButton}
                     </button>
                   </div>
                 </div>
@@ -423,7 +401,7 @@ export function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="contact-name" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        YOUR NAME *
+                        {t.contact.form.name}
                       </label>
                       <input
                         id="contact-name"
@@ -431,14 +409,14 @@ export function ContactSection() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Tariq Ahmed"
+                        placeholder={t.contact.form.namePlaceholder}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="contact-email" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        EMAIL ADDRESS *
+                        {t.contact.form.email}
                       </label>
                       <input
                         id="contact-email"
@@ -446,7 +424,7 @@ export function ContactSection() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. tariq@example.com"
+                        placeholder={t.contact.form.emailPlaceholder}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
@@ -455,7 +433,7 @@ export function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="contact-subject" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        SUBJECT *
+                        {t.contact.form.subject}
                       </label>
                       <input
                         id="contact-subject"
@@ -463,14 +441,14 @@ export function ContactSection() {
                         required
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="e.g. AI Workflow Integration"
+                        placeholder={t.contact.form.subjectPlaceholder}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="contact-service-type" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        PROJECT / SERVICE TYPE
+                        {t.contact.form.serviceType}
                       </label>
                       <select
                         id="contact-service-type"
@@ -478,25 +456,19 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
-                        <option value="MS Excel Modeling & Formulas">MS Excel Modeling & Formulas</option>
-                        <option value="Practical Accounting & Bookkeeping">Practical Accounting & Bookkeeping</option>
-                        <option value="Payroll Processing & Salary Management">Payroll Processing & Salary Management</option>
-                        <option value="Executive MS Word Documentation">Executive MS Word Documentation</option>
-                        <option value="Corporate PowerPoint Pitch Decks">Corporate PowerPoint Pitch Decks</option>
-                        <option value="Meta Marketing & Lead Generation">Meta Marketing & Lead Generation</option>
-                        <option value="Graphic Design & Packaging Mockups">Graphic Design & Packaging Mockups</option>
-                        <option value="Video Editing & Content Creation">Video Editing & Content Creation</option>
-                        <option value="AI Automation & Workflows">AI Automation & Workflows</option>
-                        <option value="Other Inquiries">Other Inquiries</option>
+                        {t.contact.form.options.serviceType.map((option: any) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Worldwide Client Scoping: Budget Tier & Target Timeline */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="contact-budget" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        ESTIMATED BUDGET / INVESTMENT
+                        {t.contact.form.budget}
                       </label>
                       <select
                         id="contact-budget"
@@ -504,16 +476,17 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
-                        <option value="Flexible / Discuss Scope First">Flexible / Discuss Scope First</option>
-                        <option value="Standard Task / Quick Setup">Standard Task / Quick Setup</option>
-                        <option value="Full Project / Dedicated Sprint">Full Project / Dedicated Sprint</option>
-                        <option value="Monthly Retainer / Ongoing Support">Monthly Retainer / Ongoing Support</option>
+                        {t.contact.form.options.budget.map((option: any) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
 
                     <div>
                       <label htmlFor="contact-timeline" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                        TARGET LAUNCH TIMELINE
+                        {t.contact.form.timeline}
                       </label>
                       <select
                         id="contact-timeline"
@@ -521,17 +494,18 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
-                        <option value="Immediate (< 1 week)">Immediate (&lt; 1 week)</option>
-                        <option value="1 – 2 Weeks">1 – 2 Weeks (High Velocity)</option>
-                        <option value="1 Month">Within 1 Month</option>
-                        <option value="Flexible / Exploratory">Flexible / Exploratory</option>
+                        {t.contact.form.options.timeline.map((option: any) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="contact-message" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
-                      MESSAGE *
+                      {t.contact.form.message}
                     </label>
                     <textarea
                       id="contact-message"
@@ -539,12 +513,11 @@ export function ContactSection() {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Describe your project goals, technical expectations, or timelines..."
+                      placeholder={t.contact.form.messagePlaceholder}
                       className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all resize-none"
                     />
                   </div>
 
-                  {/* Submission CTA (Section 17 CTA: "Start a Conversation") */}
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <button
                       type="submit"
@@ -552,10 +525,10 @@ export function ContactSection() {
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white font-semibold text-sm shadow-lg shadow-electric-600/30 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 transition-all"
                     >
                       {loading ? (
-                        <span>Processing...</span>
+                        <span>{t.contact.form.sending}</span>
                       ) : (
                         <>
-                          <span>Start a Conversation</span>
+                          <span>{t.contact.form.submit}</span>
                           <Send className="w-4 h-4" />
                         </>
                       )}
@@ -568,7 +541,7 @@ export function ContactSection() {
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 py-2 transition-colors"
                     >
                       <MessageSquare className="w-4 h-4" />
-                      <span>Prefer WhatsApp directly?</span>
+                      <span>{t.contact.form.whatsappLink}</span>
                     </a>
                   </div>
                 </form>

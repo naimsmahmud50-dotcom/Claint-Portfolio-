@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { securityPhilosophyData } from "@/data/security";
+import { useLanguage } from "../providers/LanguageProvider";
 import { ShieldCheck, KeyRound, ShieldAlert, Lock, EyeOff, CheckCircle } from "lucide-react";
 
 const getSecIcon = (icon: string) => {
@@ -20,21 +20,23 @@ const getSecIcon = (icon: string) => {
 };
 
 export function SecuritySection() {
+  const { t } = useLanguage();
+  const securityPhilosophyData = t.systems.securityPrinciples;
   return (
     <section id="security" className="py-20 md:py-28 bg-slate-950/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header (Section 25) */}
+        {/* Section Header */}
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>08 // DEFENSIVE SECURITY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Built With Security in Mind
+            {t.systems.securityTitle}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
-            Designed with security best practices in mind. Integrating defensive programming, bounded access, and server-side secret isolation into every layer.
+            {t.systems.securityDescription}
           </p>
         </div>
 
@@ -74,7 +76,7 @@ export function SecuritySection() {
         {/* Realistic Security Disclaimer Note */}
         <div className="mt-10 p-4 rounded-xl bg-slate-900/40 border border-slate-800 text-center">
           <p className="text-xs text-slate-300 font-mono">
-            ENGINEERING PRINCIPLE: Defensive posture relies on continuous threat modeling, least privilege, and sanitization rather than absolute claims.
+            {t.systems.engineeringPrinciple}
           </p>
         </div>
 

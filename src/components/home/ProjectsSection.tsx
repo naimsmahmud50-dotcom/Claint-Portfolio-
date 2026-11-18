@@ -8,6 +8,7 @@ import { ProjectCard } from "../projects/ProjectCard";
 import { ProjectSlider } from "../projects/ProjectSlider";
 import { FolderGit2, Search, ExternalLink, Share2, Layers } from "lucide-react";
 import { profileData } from "@/data/profile";
+import { useLanguage } from "../providers/LanguageProvider";
 
 const categories: ProjectCategory[] = [
   "All",
@@ -21,6 +22,7 @@ function ProjectsContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { t } = useLanguage();
 
   // Read initial filters from URL search params
   const urlCategory = searchParams.get("category") as ProjectCategory;
@@ -102,13 +104,13 @@ function ProjectsContent() {
         <div className="max-w-3xl mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <FolderGit2 className="w-3.5 h-3.5" />
-            <span>01 // PORTFOLIO SHOWCASE</span>
+            <span>01 // {t.projects.title}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Featured Case Studies &amp; Projects
+            {t.projects.title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-            High-precision Microsoft Office solutions, formula-driven Excel automation, practical accounting &amp; payroll systems, and executive pitch deck designs built for business growth.
+            {t.projects.desc}
           </p>
         </div>
 
@@ -122,10 +124,10 @@ function ProjectsContent() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan mb-2">
               <Layers className="w-3.5 h-3.5 text-cyan" />
-              <span>COMPLETE CLIENT REPOSITORY</span>
+              <span>{t.projects.repository}</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
-              Browse All Projects &amp; Solutions
+              {t.projects.browse}
             </h3>
           </div>
 
@@ -136,7 +138,7 @@ function ProjectsContent() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
-              placeholder="Filter by skill, formula, tool..."
+              placeholder={t.projects.search}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-xs sm:text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
             />
           </div>
@@ -173,13 +175,13 @@ function ProjectsContent() {
         ) : (
           /* Empty State */
           <div className="py-16 text-center p-8 rounded-2xl bg-slate-900/40 border border-slate-800">
-            <p className="text-base text-slate-200 font-medium">No matching projects found</p>
-            <p className="text-xs text-slate-300 mt-1">Try refining your search keyword or selecting "All" categories.</p>
+            <p className="text-base text-slate-200 font-medium">{t.projects.noProjects}</p>
+            <p className="text-xs text-slate-300 mt-1">{t.projects.tryRefining}</p>
             <button
               onClick={handleResetFilters}
               className="mt-4 px-4 py-2 rounded-lg bg-electric-600 text-white text-xs font-medium hover:bg-electric-500 transition-colors"
             >
-              Reset Filters
+              {t.projects.reset}
             </button>
           </div>
         )}
@@ -189,13 +191,13 @@ function ProjectsContent() {
           <div className="max-w-xl text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono mb-2">
               <Share2 className="w-3.5 h-3.5 text-cyan-400" />
-              <span>PRACTICAL PRODUCTIVITY INITIATIVE</span>
+              <span>{t.projects.productivity}</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
-              Formula Precision &amp; Practical Business Solutions
+              {t.projects.solutionsTitle}
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-slate-300/90 leading-relaxed">
-              Eyakub's dedicated focus on error-free MS Excel modeling, double-entry accounting reconciliation, and high-converting commercial media assets for growing enterprises.
+              {t.projects.solutionsDesc}
             </p>
           </div>
 
@@ -203,7 +205,7 @@ function ProjectsContent() {
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan hover:bg-cyan/90 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-cyan/30 hover:scale-[1.02] transition-all shrink-0 cursor-pointer"
           >
-            <span>Discuss Your Project</span>
+            <span>{t.projects.discuss}</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>

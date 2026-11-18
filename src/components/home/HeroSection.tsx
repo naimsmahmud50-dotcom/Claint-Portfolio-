@@ -7,9 +7,6 @@ import { profileData } from "@/data/profile";
 import {
   ArrowRight,
   Sparkles,
-  Terminal,
-  ShieldCheck,
-  CheckCircle,
   Copy,
   FileText,
   Calendar,
@@ -18,9 +15,11 @@ import {
 } from "lucide-react";
 import { useToast } from "../providers/ToastProvider";
 import { HeroTerminal } from "../ui/HeroTerminal";
+import { useLanguage } from "../providers/LanguageProvider";
 
 export function HeroSection() {
   const { toast } = useToast();
+  const { language, toggleLanguage, t } = useLanguage();
 
   // =========================================================================
   // TYPEWRITER ENGINE 1: "Specializing in..." Rotating Sub-Roles
@@ -72,6 +71,7 @@ export function HeroSection() {
       id="hero"
       className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden tech-grid-bg"
     >
+
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-electric-600/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-cyan/10 rounded-full blur-3xl pointer-events-none" />
@@ -93,7 +93,7 @@ export function HeroSection() {
 
             {/* Name Heading with Luminous Living Gradient */}
             <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 leading-tight">
-              Hi, I'm{" "}
+              {t.hero.hi}{" "}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-600 dark:from-cyan dark:via-teal-300 dark:to-electric-400 bg-clip-text text-transparent animate-gradient-flow font-extrabold drop-shadow-sm dark:drop-shadow-[0_0_25px_rgba(6,182,212,0.35)]">
                   {profileData.name}
@@ -103,7 +103,7 @@ export function HeroSection() {
 
             {/* Dynamic Rotating Sub-Role Ticker with Fluid Typewriter */}
             <div className="mt-4 flex flex-wrap items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-900 dark:text-slate-200 min-h-[48px]">
-              <span className="text-slate-600 dark:text-slate-300 font-normal">Specializing in</span>
+              <span className="text-slate-600 dark:text-slate-300 font-normal">{t.hero.specializingIn}</span>
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-cyan-500/40 text-cyan-700 dark:text-cyan font-mono text-base sm:text-xl transition-all shadow-md shadow-slate-200/50 dark:shadow-lg dark:shadow-cyan/10">
                 <span>{roleText}</span>
                 <span className="inline-block w-2 sm:w-2.5 h-4 sm:h-5 ml-1.5 bg-cyan-600 dark:bg-cyan animate-terminal-blink align-middle shadow-sm shadow-cyan" />
@@ -121,7 +121,7 @@ export function HeroSection() {
                 href="/projects"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 dark:from-electric-600 dark:via-cyan dark:to-teal-400 text-white dark:text-slate-950 font-bold text-sm shadow-xl shadow-blue-500/20 dark:shadow-cyan/25 hover:shadow-blue-500/35 dark:hover:shadow-cyan/45 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>View Featured Work</span>
+                <span>{t.hero.viewWork}</span>
                 <ArrowRight className="w-4 h-4 text-white dark:text-slate-950" />
               </Link>
 
@@ -129,7 +129,7 @@ export function HeroSection() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan text-slate-100 hover:text-cyan font-semibold text-sm hover:bg-slate-800 transition-all cursor-pointer"
               >
-                <span>Let&apos;s Work Together</span>
+                <span>{t.hero.workTogether}</span>
                 <Sparkles className="w-4 h-4 text-cyan" />
               </Link>
 
@@ -144,7 +144,7 @@ export function HeroSection() {
                   title="View Executive Resume PDF"
                 >
                   <FileText className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Resume CV</span>
+                  <span>{t.hero.resume}</span>
                 </button>
 
                 <button
@@ -161,14 +161,14 @@ export function HeroSection() {
                   title="Book 15-Minute Strategy Call"
                 >
                   <Calendar className="w-3.5 h-3.5 text-cyan" />
-                  <span>Book Call</span>
+                  <span>{t.hero.bookCall}</span>
                 </button>
               </div>
             </div>
 
             {/* Secondary Direct Channels & Quick Action Row */}
             <div className="mt-10 flex flex-wrap items-center gap-5 pt-6 border-t border-slate-800/80 text-sm text-slate-300">
-              <span className="font-mono text-slate-300 font-semibold uppercase tracking-wider text-xs">Direct:</span>
+              <span className="font-mono text-slate-300 font-semibold uppercase tracking-wider text-xs">{t.hero.direct}</span>
               
               <a
                 href={profileData.socials.whatsapp}
@@ -177,7 +177,7 @@ export function HeroSection() {
                 className="inline-flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-400" />
-                <span>WhatsApp</span>
+                <span>{t.hero.whatsapp}</span>
               </a>
 
               <a
@@ -185,7 +185,7 @@ export function HeroSection() {
                 className="inline-flex items-center gap-1.5 hover:text-cyan transition-colors"
               >
                 <Mail className="w-4 h-4 text-cyan" />
-                <span>Email</span>
+                <span>{t.hero.email}</span>
               </a>
 
               <button
@@ -194,7 +194,7 @@ export function HeroSection() {
                 title="Click to copy email address"
               >
                 <Copy className="w-3.5 h-3.5" />
-                <span>Copy Email</span>
+                <span>{t.hero.copyEmail}</span>
               </button>
             </div>
           </div>
@@ -209,20 +209,6 @@ export function HeroSection() {
               {/* Elegant Floating Glass Frame */}
               <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-cyan-500/30 group-hover:border-cyan-400/60 shadow-2xl transition-all duration-500">
                 
-                {/* Top Floating Status Pill */}
-                <div className="absolute top-3 left-3 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-emerald-500/40 text-[11px] font-mono font-medium text-emerald-300 shadow-md">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  <span>OPEN FOR CONTRACTS</span>
-                </div>
-
-                {/* Top Right Location Tag */}
-                <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-mono text-slate-300">
-                  DHAKA (UTC+6)
-                </div>
-
                 {/* Portrait Image (Golden Ratio 4:5 with top focus) */}
                 <div className="relative aspect-[4/5] w-full bg-slate-950 overflow-hidden">
                   <Image
@@ -247,19 +233,17 @@ export function HeroSection() {
                   ========================================================================= */}
               <div className="mt-3.5 w-full rounded-2xl bg-white/95 dark:bg-slate-950/70 backdrop-blur-xl border border-slate-200/90 dark:border-cyan-500/30 p-4 sm:p-5 shadow-xl shadow-slate-200/60 dark:shadow-2xl dark:shadow-cyan/15 flex flex-col items-center justify-center text-center group hover:border-cyan-500/50 hover:shadow-cyan/25 transition-all">
                 
-                {/* Crisp Authoritative Name */}
-                <div className="flex items-center justify-center min-h-[38px]">
-                  <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans">
-                    <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-600 dark:from-white dark:via-cyan dark:to-teal-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(6,182,212,0.35)]">
-                      {profileData.name}
-                    </span>
+                {/* Crisp Authoritative Name with Animation */}
+                <div className="flex items-center justify-center min-h-[38px] w-full overflow-hidden">
+                  <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-600 dark:from-white dark:via-cyan dark:to-teal-300 bg-clip-text text-transparent animate-gradient-flow animate-marquee-flow">
+                    Eyakub Mahmud
                   </span>
                 </div>
 
                 {/* Refined Executive Role Subtitle */}
                 <div className="mt-1 flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-                  <span>MS Office &amp; Practical Accounting Specialist</span>
+                  <span>{t.hero.specialist}</span>
                 </div>
 
               </div>
