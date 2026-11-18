@@ -4,7 +4,7 @@ A modern personal portfolio website for **Eyakub Mahmud** (*MS Office Applicatio
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 - **Core Specialization:** Microsoft Office Application Suite (Advanced Excel with VLOOKUP, XLOOKUP, Pivot Tables, Macro formulas, Dynamic Dashboards; Word Executive Documentation; PowerPoint High-Conversion Pitch Decks) and Practical Accounting (General Ledger, Payroll, Double-Entry, Cash Flow, Financial Statements).
 - **Secondary Multidisciplinary Skills:** Meta Marketing (Facebook/Instagram Ads, Pixel setup, CBO/ABO campaigns), Graphic Design, Video Editing, AI Automation (workflows, custom prompts, smart spreadsheets), and Foundational Islamic Business Ethics.
@@ -18,7 +18,7 @@ A modern personal portfolio website for **Eyakub Mahmud** (*MS Office Applicatio
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript 5 (Strict Mode)
@@ -29,7 +29,7 @@ A modern personal portfolio website for **Eyakub Mahmud** (*MS Office Applicatio
 
 ---
 
-## 🏃 Getting Started
+##  Getting Started
 
 ### 1. Install Dependencies
 ```bash
@@ -50,7 +50,7 @@ npm start
 
 ---
 
-## 🔐 Environment Variables (Optional)
+## Environment Variables (Optional)
 
 Create a `.env.local` file in the root directory if you wish to configure server-side WhatsApp Cloud API dispatch:
 
@@ -62,7 +62,7 @@ WHATSAPP_RECIPIENT_PHONE=8801877508893
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 Eyakub_Mahmud_Portfolio_Pro/
