@@ -32,12 +32,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  basePath: "/Claint-Portfolio-",
   reactStrictMode: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   async headers() {
     return [
       {
